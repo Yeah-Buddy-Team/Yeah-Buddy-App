@@ -2,13 +2,9 @@ import { ColorValue, Text, TextProps, TextStyle } from 'react-native';
 import { BLACK } from '../../../constants';
 
 export enum FontWeight {
-  LIGHT = '300',
   REGULAR = '400',
   MEDIUM = '500',
   SEMIBOLD = '600',
-  BOLD = '700',
-  EXTRABOLD = '800',
-  BLACK = '900',
 }
 
 type Props = TextProps & {
@@ -20,9 +16,6 @@ type Props = TextProps & {
   light?: boolean;
   medium?: boolean;
   semibold?: boolean;
-  bold?: boolean;
-  extrabold?: boolean;
-  black?: boolean;
 };
 
 export default function (props: Props) {
@@ -35,19 +28,12 @@ export default function (props: Props) {
     light,
     medium,
     semibold,
-    bold,
-    extrabold,
-    black,
     ...rest
   } = props;
 
   const fontWeight =
-    (light && FontWeight.LIGHT) ||
     (medium && FontWeight.MEDIUM) ||
     (semibold && FontWeight.SEMIBOLD) ||
-    (bold && FontWeight.BOLD) ||
-    (extrabold && FontWeight.EXTRABOLD) ||
-    (black && FontWeight.BLACK) ||
     FontWeight.REGULAR;
 
   const textDecorationLine = underline ? 'underline' : 'none';
