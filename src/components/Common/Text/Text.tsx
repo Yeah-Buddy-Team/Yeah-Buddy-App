@@ -44,7 +44,7 @@ const Size = {
 };
 
 type Props = TextProps & {
-  children: React.ReactElement;
+  children: React.ReactNode;
   style?: TextStyle;
   color?: ColorValue;
   underline?: boolean;
