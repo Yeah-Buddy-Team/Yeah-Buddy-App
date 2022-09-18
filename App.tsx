@@ -1,11 +1,11 @@
-import React from 'react';
-import { SafeAreaView, StatusBar, Text } from 'react-native';
+import { SafeAreaView, StatusBar } from 'react-native';
+import RootNavigator from './src/navigation/RootNavigator';
 
 function App() {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1 }}>
       <StatusBar barStyle="dark-content" />
-      <Text>asdf</Text>
+      <RootNavigator />
     </SafeAreaView>
   );
 }
