@@ -1,20 +1,17 @@
+import { ComponentProps } from 'react';
 import {
   KeyboardAvoidingView,
-  KeyboardAvoidingViewProps,
   Platform,
-  RefreshControl,
   SafeAreaView,
   ScrollView,
-  ScrollViewProps,
   View,
-  ViewProps,
   ViewStyle,
 } from 'react-native';
 
-type Props = ViewProps &
-  SafeAreaView &
-  ScrollViewProps &
-  KeyboardAvoidingViewProps & {
+type Props = ComponentProps<typeof View> &
+  ComponentProps<typeof SafeAreaView> &
+  ComponentProps<typeof ScrollView> &
+  ComponentProps<typeof KeyboardAvoidingView> & {
     row?: boolean;
     fill?: boolean;
     safe?: boolean;

@@ -1,3 +1,6 @@
+import { Theme as NavigationTheme } from '@react-navigation/native';
+import { ThemeColor } from '../types/System/Theme';
+
 export enum THEME_TYPE {
   LIGHT = 'LIGHT',
   DARK = 'DARK',
@@ -112,3 +115,12 @@ export const BLACK = '#000000';
 
 export const KAKAO_YELLOW = '#ffe812';
 export const KAKAO_BROWN = '#3c1e1e';
+
+export const LIGHT_NAVIGATION_THEME: ThemeColor = {
+  primary: '',
+  background: WHITE,
+  card: '',
+  text: BLACK,
+  border: '',
+  notification: '',
+};
