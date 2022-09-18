@@ -1,13 +1,20 @@
 import {
   NavigationContainer,
   NavigationContainerRef,
+  Theme,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import * as RootScreens from '../screens';
 import { RootStack, RootStackParamList } from '../types/System';
+import { LIGHT_NAVIGATION_THEME } from '../constants';
 
 const Stack = createNativeStackNavigator();
+
+const theme: Theme = {
+  dark: false,
+  colors: LIGHT_NAVIGATION_THEME,
+};
 
 export default function (): React.ReactElement | null {
   const navigationRef =
@@ -20,6 +27,7 @@ export default function (): React.ReactElement | null {
 
   return (
     <NavigationContainer
+      theme={theme}
       ref={navigationRef}
       onReady={() => {
         routeNameRef.current = navigationRef?.current?.getCurrentRoute()?.name;
