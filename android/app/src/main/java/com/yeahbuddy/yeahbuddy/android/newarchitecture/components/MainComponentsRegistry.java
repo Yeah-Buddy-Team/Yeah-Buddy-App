@@ -1,4 +1,4 @@
-package com.yeahbuddyapp.newarchitecture.components;
+package com.yeahbuddy.yeahbuddy.android.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;
