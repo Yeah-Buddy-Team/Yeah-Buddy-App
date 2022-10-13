@@ -130,4 +130,9 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 
 #endif
 
+
+- (BOOL) application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+  if ([WithKakaoSDK isKakaoTalkLoginUrl:url]) return [WithKakaoSDK handleOpenUrl:url];
+  return YES;
+}
 @end
