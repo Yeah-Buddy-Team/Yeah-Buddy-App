@@ -1,5 +1,8 @@
 // import KakaoSDK from '@actbase/react-kakaosdk';
 import React from 'react';
+import { Image, Platform } from 'react-native';
+import KaKaoLoginBtn from '../../assets/images/kakao_login_medium_wide.png';
+import Logo from '../../assets/images/Logo.png';
 // import { Alert } from 'react-native';
 import View from '../../components/Common/View/View';
 import { INDIGO } from '../../constants';
@@ -17,5 +20,33 @@ export function SignIn() {
   //   })();
   // });
 
-  return <View safe fill style={{ backgroundColor: INDIGO[500] }}></View>;
+  return (
+    <View
+      safe
+      fill
+      style={{
+        backgroundColor: INDIGO[500],
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}
+    >
+      <Image
+        source={Logo}
+        style={{
+          resizeMode: 'contain',
+          width: 72,
+          height: 111,
+          top: '30%',
+        }}
+      />
+      <Image
+        source={KaKaoLoginBtn}
+        style={{
+          resizeMode: 'contain',
+          width: '150%',
+          bottom: Platform.OS === 'ios' ? '5%' : '7%',
+        }}
+      />
+    </View>
+  );
 }
