@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import "WithKaKaoSDK.h"
 
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
@@ -132,7 +133,13 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 
 
 - (BOOL) application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+  NSString *appKey = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"KAKAO_APP_KEY"];
+  // [WithKakaoSDK initSDK: appKey];
   if ([WithKakaoSDK isKakaoTalkLoginUrl:url]) return [WithKakaoSDK handleOpenUrl:url];
-  return YES;
+  // [[FBSDKApplicationDelegate sharedInstance] application:app
+  // openURL:url
+  // options:options];
+  
+  return NO;
 }
 @end
