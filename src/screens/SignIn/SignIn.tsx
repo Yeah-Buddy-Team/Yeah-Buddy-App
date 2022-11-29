@@ -1,7 +1,12 @@
 // import KakaoSDK from '@actbase/react-kakaosdk';
 import React from 'react';
-import { Image, Platform } from 'react-native';
-import KaKaoLoginBtn from '../../assets/images/kakao_login_medium_wide.png';
+import {
+  Image,
+  Platform,
+  TouchableOpacity,
+  useWindowDimensions,
+} from 'react-native';
+import KaKaoLoginBtn from '../../assets/images/KaKaoLoginBtn.png';
 import Logo from '../../assets/images/Logo.png';
 // import { Alert } from 'react-native';
 import View from '../../components/Common/View/View';
@@ -19,6 +24,7 @@ export function SignIn() {
   //     }
   //   })();
   // });
+  const { width: WIDTH } = useWindowDimensions();
 
   return (
     <View
@@ -39,14 +45,24 @@ export function SignIn() {
           top: '30%',
         }}
       />
-      <Image
-        source={KaKaoLoginBtn}
+      <TouchableOpacity
         style={{
-          resizeMode: 'contain',
-          width: '150%',
-          bottom: Platform.OS === 'ios' ? '5%' : '7%',
+          width: WIDTH - 40,
+          height: 48,
+          marginBottom: '14.7%',
         }}
-      />
+        onPress={() => console.log(1)}
+        activeOpacity={0.7}
+      >
+        <Image
+          source={KaKaoLoginBtn}
+          style={{
+            resizeMode: 'contain',
+            width: '100%',
+            height: '100%',
+          }}
+        />
+      </TouchableOpacity>
     </View>
   );
 }
