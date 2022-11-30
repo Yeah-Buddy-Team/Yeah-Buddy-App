@@ -5,9 +5,12 @@ import KakaoLoginBtn from '../../assets/images/KakaoLoginBtn.png';
 import Logo from '../../assets/images/Logo.png';
 import View from '../../components/Common/View/View';
 import { INDIGO } from '../../constants';
+import Config from 'react-native-config';
 
 export function SignIn() {
   const { width: WIDTH } = useWindowDimensions();
+
+  console.log(Config.KAKAO_NATIVE_APP_KEY);
 
   const onPressKakaoSignInBtn = async () => {
     try {
