@@ -63,4 +63,8 @@ buck-out/
 /vendor/bundle/
 
 # Environment Variables
+.env
 .env.*
+
+# react-native-config codegen
+ios/tmp.xcconfig

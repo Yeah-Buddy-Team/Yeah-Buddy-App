@@ -5,8 +5,8 @@
   "scripts": {
     "android": "react-native run-android",
     "android-dev": "react-native run-android --variant=dev",
-    "ios": "react-native run-ios",
-    "ios-dev": "react-native run-ios --scheme \"YeahBuddyAppDev\"",
+    "ios": "react-native run-ios --scheme 'YeahBuddyApp'",
+    "ios-dev": "react-native run-ios --scheme 'YeahBuddyAppDev'",
     "start": "react-native start",
     "test": "jest"
   },
