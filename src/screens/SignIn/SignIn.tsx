@@ -10,11 +10,9 @@ import Config from 'react-native-config';
 export function SignIn() {
   const { width: WIDTH } = useWindowDimensions();
 
-  console.log(Config.KAKAO_NATIVE_APP_KEY);
-
   const onPressKakaoSignInBtn = async () => {
     try {
-      await KakaoSDK.init('7b128fe0c9143e58ce2b8a9e75a7f979');
+      await KakaoSDK.init(Config.KAKAO_NATIVE_APP_KEY);
       const tokens = await KakaoSDK.login();
       console.log(tokens);
     } catch (e: any) {
