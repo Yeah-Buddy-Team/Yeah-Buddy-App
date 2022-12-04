@@ -40,6 +40,7 @@
 		3B4392A12AC88292D35C810B /* Pods-YeahBuddyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YeahBuddyApp.debug.xcconfig"; path = "Target Support Files/Pods-YeahBuddyApp/Pods-YeahBuddyApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-YeahBuddyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YeahBuddyApp.release.xcconfig"; path = "Target Support Files/Pods-YeahBuddyApp/Pods-YeahBuddyApp.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-YeahBuddyApp-YeahBuddyAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YeahBuddyApp-YeahBuddyAppTests.debug.xcconfig"; path = "Target Support Files/Pods-YeahBuddyApp-YeahBuddyAppTests/Pods-YeahBuddyApp-YeahBuddyAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5CE162CB293CE5FB007D2187 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-YeahBuddyApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YeahBuddyApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = YeahBuddyApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-YeahBuddyApp-YeahBuddyAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YeahBuddyApp-YeahBuddyAppTests.release.xcconfig"; path = "Target Support Files/Pods-YeahBuddyApp-YeahBuddyAppTests/Pods-YeahBuddyApp-YeahBuddyAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -116,6 +117,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				5CE162CB293CE5FB007D2187 /* Config.xcconfig */,
 				13B07FAE1A68108700A75B9A /* YeahBuddyApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* YeahBuddyAppTests */,
@@ -531,6 +533,7 @@
 		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CE162CB293CE5FB007D2187 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -603,6 +606,7 @@
 		};
 		83CBBA211A601CBA00E9B192 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CE162CB293CE5FB007D2187 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;

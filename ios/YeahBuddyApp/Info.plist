@@ -52,15 +52,15 @@
     <key>UIViewControllerBasedStatusBarAppearance</key>
     <false/>
     <key>KAKAO_APP_KEY</key>
-    <string>7b128fe0c9143e58ce2b8a9e75a7f979</string>
+    <string>$(KAKAO_NATIVE_APP_KEY)</string>
     <key>LSApplicationQueriesSchemes</key>
     <array>
       <string>kakaokompassauth</string>
       <string>kakaolink</string>
-      <string>7b128fe0c9143e58ce2b8a9e75a7f979</string>
-      <string>kakao7b128fe0c9143e58ce2b8a9e75a7f979</string>
-      <string>7b128fe0c9143e58ce2b8a9e75a7f979</string>
-      <string>kakao7b128fe0c9143e58ce2b8a9e75a7f979</string>
+      <string>$(KAKAO_NATIVE_APP_KEY)</string>
+      <string>kakao$(KAKAO_NATIVE_APP_KEY)</string>
+      <string>$(KAKAO_NATIVE_APP_KEY)</string>
+      <string>kakao$(KAKAO_NATIVE_APP_KEY)</string>
     </array>
     <key>CFBundleURLTypes</key>
     <array>
@@ -69,7 +69,7 @@
         <string>Editor</string>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>kakao7b128fe0c9143e58ce2b8a9e75a7f979</string>
+          <string>kakao$(KAKAO_NATIVE_APP_KEY)</string>
         </array>
       </dict>
       <dict>
@@ -77,7 +77,7 @@
         <string>Editor</string>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>kakao7b128fe0c9143e58ce2b8a9e75a7f979</string>
+          <string>kakao$(KAKAO_NATIVE_APP_KEY)</string>
         </array>
       </dict>
     </array>
