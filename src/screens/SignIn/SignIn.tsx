@@ -1,23 +1,16 @@
-import KakaoSDK from '@actbase/react-kakaosdk';
 import React from 'react';
 import { Image, TouchableOpacity, useWindowDimensions } from 'react-native';
 import KakaoSignInBtn from '../../assets/images/KakaoSignInBtn.png';
 import Logo from '../../assets/images/Logo.png';
 import View from '../../components/Common/View/View';
 import { INDIGO } from '../../constants';
-import Config from 'react-native-config';
+import { AuthService } from '../../services';
 
 export function SignIn() {
   const { width: WIDTH } = useWindowDimensions();
 
   const onPressKakaoSignInBtn = async () => {
-    try {
-      await KakaoSDK.init(Config.KAKAO_NATIVE_APP_KEY);
-      const tokens = await KakaoSDK.login();
-      console.log(tokens);
-    } catch (e: any) {
-      console.error(e);
-    }
+    await AuthService.kakaoSignIn();
   };
 
   return (
