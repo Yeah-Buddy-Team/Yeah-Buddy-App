@@ -1,7 +1,7 @@
 import KakaoSDK from '@actbase/react-kakaosdk';
 import React from 'react';
 import { Image, TouchableOpacity, useWindowDimensions } from 'react-native';
-import KakaoLoginBtn from '../../assets/images/KakaoLoginBtn.png';
+import KakaoSignInBtn from '../../assets/images/KakaoSignInBtn.png';
 import Logo from '../../assets/images/Logo.png';
 import View from '../../components/Common/View/View';
 import { INDIGO } from '../../constants';
@@ -49,7 +49,7 @@ export function SignIn() {
         activeOpacity={0.7}
       >
         <Image
-          source={KakaoLoginBtn}
+          source={KakaoSignInBtn}
           style={{
             resizeMode: 'contain',
             width: '100%',
