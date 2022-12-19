@@ -1,4 +1,4 @@
-package com.yeahbuddyapp;
+package com.yeahbuddy.yeahbuddy.android;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
