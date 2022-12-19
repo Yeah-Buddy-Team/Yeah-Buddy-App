@@ -8,6 +8,7 @@ import React from 'react';
 import * as RootScreens from '../screens';
 import { RootStack, RootStackParamList } from '../types/System';
 import { LIGHT_NAVIGATION_THEME } from '../constants';
+import BottomTabNavigator from './BottomTabNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +38,7 @@ export default function (): React.ReactElement | null {
         initialRouteName={initialRoute}
         screenOptions={{ headerShown: false }}
       >
+        <Stack.Screen key="Root" name="Root" component={BottomTabNavigator} />
         {Object.entries(RootScreens).map(([name, component]) => (
           <Stack.Screen
             key={name}
