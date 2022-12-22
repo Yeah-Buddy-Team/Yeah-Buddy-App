@@ -1,6 +1,6 @@
 import KakaoSDK from '@actbase/react-kakaosdk';
 import Config from 'react-native-config';
-import { AuthHelper } from '../helpers';
+import { AuthAPI } from '../api';
 
 export const kakaoSignIn = async () => {
   try {
@@ -9,7 +9,7 @@ export const kakaoSignIn = async () => {
 
     if (!tokens?.access_token || !tokens?.refresh_token) return;
 
-    const response = AuthHelper.postKaKaoSignIn({
+    AuthAPI.postKaKaoSignIn({
       accessToken: tokens.access_token,
       refreshToken: tokens.refresh_token,
     });
