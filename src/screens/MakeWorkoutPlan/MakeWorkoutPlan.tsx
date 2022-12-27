@@ -1,5 +1,5 @@
-import { View } from '../../components/Common';
+import { HeaderLayout } from '../../layouts';
 
 export function MakeWorkoutPlan() {
-  return <View />;
+  return <HeaderLayout headerTitle="운동 시작하기" />;
 }
