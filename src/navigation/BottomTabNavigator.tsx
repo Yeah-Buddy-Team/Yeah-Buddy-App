@@ -5,7 +5,7 @@ import {
 import { TouchableOpacity } from 'react-native';
 import { View, Text, Icon } from '../components/Common';
 import IconMap from '../components/Common/Icon/IconMap';
-import * as COLORS from '../constants';
+import { COLORS } from '../constants';
 import { WorkoutPlan, Calendar, Friends, MyProfile } from '../screens';
 
 const BottomTab = createBottomTabNavigator();

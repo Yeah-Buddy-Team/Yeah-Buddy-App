@@ -3,7 +3,7 @@ import { Image, TouchableOpacity } from 'react-native';
 import KakaoSignInBtn from '../../assets/images/KakaoSignInBtn.png';
 import Logo from '../../assets/images/Logo.png';
 import { View } from '../../components/Common';
-import { INDIGO } from '../../constants';
+import { COLORS } from '../../constants';
 import { useSignIn } from './useSignIn';
 
 export function SignIn() {
@@ -14,7 +14,7 @@ export function SignIn() {
       safe
       fill
       style={{
-        backgroundColor: INDIGO[500],
+        backgroundColor: COLORS.INDIGO[500],
         alignItems: 'center',
         justifyContent: 'space-between',
       }}

@@ -1,7 +1,7 @@
 import { ViewStyle } from 'react-native';
 
 import { View } from '../components/Common';
-import * as COLORS from '../constants/Theme';
+import { COLORS } from '../constants';
 
 type Props = {
   style?: ViewStyle;

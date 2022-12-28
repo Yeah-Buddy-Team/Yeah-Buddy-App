@@ -1,7 +1,7 @@
 import { Header } from './components';
 
 import { View } from '../components/Common';
-import * as COLORS from '../constants/Theme';
+import { COLORS } from '../constants';
 
 type Props = {
   headerRight?: React.ReactNode;

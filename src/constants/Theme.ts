@@ -1,4 +1,3 @@
-import { Theme as NavigationTheme } from '@react-navigation/native';
 import { ThemeColor } from '../types/System/Theme';
 
 export enum THEME_TYPE {

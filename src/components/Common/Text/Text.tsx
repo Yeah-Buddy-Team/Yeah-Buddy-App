@@ -1,5 +1,5 @@
 import { ColorValue, Text, TextProps, TextStyle } from 'react-native';
-import { BLACK } from '../../../constants';
+import { COLORS } from '../../../constants';
 
 export enum FontWeight {
   Regular = '400',
@@ -19,27 +19,27 @@ export enum FontSize {
 const Size = {
   [FontSize.Subtitle]: {
     fontSize: 20,
-    lineHeight: 20 * 1.4,
+    lineHeight: 24.2,
   },
   [FontSize.Body]: {
     fontSize: 18,
-    lineHeight: 18 * 1.45,
+    lineHeight: 21.78,
   },
   [FontSize.Body2]: {
     fontSize: 16,
-    lineHeight: 16 * 1.6,
+    lineHeight: 19.36,
   },
   [FontSize.Body3]: {
     fontSize: 14,
-    lineHeight: 14 * 1.6,
+    lineHeight: 16.94,
   },
   [FontSize.Caption]: {
     fontSize: 12,
-    lineHeight: 12 * 1.5,
+    lineHeight: 14.52,
   },
   [FontSize.Caption2]: {
     fontSize: 10,
-    lineHeight: 10 * 1.0,
+    lineHeight: 12.1,
   },
 };
 
@@ -95,7 +95,7 @@ export default function (props: Props) {
     ];
 
   const textDecorationLine = underline ? 'underline' : 'none';
-  const color = customColor || BLACK;
+  const color = customColor || COLORS.BLACK;
 
   const style: TextStyle = {
     fontWeight,

@@ -7,14 +7,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import * as RootScreens from '../screens';
 import { RootStack, RootStackParamList } from '../types/System';
-import { LIGHT_NAVIGATION_THEME } from '../constants';
+import { COLORS } from '../constants';
 import BottomTabNavigator from './BottomTabNavigator';
 
 const Stack = createNativeStackNavigator();
 
 const theme: Theme = {
   dark: false,
-  colors: LIGHT_NAVIGATION_THEME,
+  colors: COLORS.LIGHT_NAVIGATION_THEME,
 };
 
 export default function (): React.ReactElement | null {
