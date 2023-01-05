@@ -35,7 +35,7 @@ export function SignIn() {
           marginBottom: '14.7%',
         }}
         onPress={signInWithKakao}
-        activeOpacity={0.7}
+        activeOpacity={0.8}
       >
         <Image
           source={KakaoSignInBtn}

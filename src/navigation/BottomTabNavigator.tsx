@@ -95,7 +95,7 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
             style={{ flex: 1 }}
             testID={options.tabBarTestID}
             onPress={onPress}
-            activeOpacity={0.7}
+            activeOpacity={0.8}
           >
             <View
               style={{
