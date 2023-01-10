@@ -36,7 +36,11 @@ export default function (): React.ReactElement | null {
     >
       <Stack.Navigator
         initialRouteName={initialRoute}
-        screenOptions={{ headerShown: false }}
+        screenOptions={{
+          headerShown: false,
+          animation: 'slide_from_right',
+          animationDuration: 10,
+        }}
       >
         <Stack.Screen key="Root" name="Root" component={BottomTabNavigator} />
         {Object.entries(RootScreens).map(([name, component]) => (
