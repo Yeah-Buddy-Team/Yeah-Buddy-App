@@ -13,8 +13,11 @@ export const useSelectWorkoutStimulationBodyPart = () => {
   const [workoutStimulationBodyParts, setWorkoutStimulationBodyParts] =
     React.useState<StimulationBodyPart[]>([]);
 
-  const confirmStimulationBodyPart = () => {
-    navigation.push(RootStack.SelectWorkoutExerciseByBodyPart);
+  const confirmStimulationBodyPart = (selectedStimulationBodyPart: string) => {
+    navigation.push(RootStack.SelectWorkoutExerciseByBodyPart, {
+      workoutStimulationBodyParts,
+      selectedStimulationBodyPart,
+    });
   };
 
   const getWorkoutStimulationBodyPart = async () => {

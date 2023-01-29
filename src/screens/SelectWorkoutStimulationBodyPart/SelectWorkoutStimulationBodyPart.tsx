@@ -29,7 +29,7 @@ export function SelectWorkoutStimulationBodyPart() {
               key={item.key}
               label={target.name}
               icon={target.icon}
-              onPress={confirmStimulationBodyPart}
+              onPress={() => confirmStimulationBodyPart(item.key)}
             />
           );
         })}
