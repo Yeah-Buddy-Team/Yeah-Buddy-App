@@ -1,6 +1,5 @@
 export type StimulationBodyPart = {
   key: string;
-  name: string;
   order: number;
 };
 
