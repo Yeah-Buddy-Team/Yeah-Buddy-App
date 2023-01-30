@@ -174,6 +174,24 @@ const IconMap = {
       </>
     ),
   },
+  Cancel: {
+    filled: (
+      <>
+        <Path
+          d="M6 6L18 18"
+          stroke="#BDBDBD"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <Path
+          d="M18 6L6 18"
+          stroke="#BDBDBD"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </>
+    ),
+  },
   Delete: {
     filled: (
       <Path
