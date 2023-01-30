@@ -1,5 +1,9 @@
-import { ScrollView, useWindowDimensions } from 'react-native';
-import { View, Button } from '../../components/Common';
+import {
+  ScrollView,
+  TouchableOpacity,
+  useWindowDimensions,
+} from 'react-native';
+import { View, Button, Text, Icon } from '../../components/Common';
 import { HeaderLayout } from '../../layouts';
 import { useSelectWorkoutExerciseByBodyPart } from './useSelectWorkoutExerciseByBodyPart';
 import { BodyPart, Exercise } from './components';
@@ -90,14 +94,62 @@ export function SelectWorkoutExerciseByBodyPart() {
           <View
             style={{
               width: WIDTH,
-              height: 85,
               borderTopColor: COLORS.GRAY[300],
               borderTopWidth: 1,
-              paddingTop: 16,
+              paddingTop: selectedExerciseList.length > 0 ? 6 : 16,
+              paddingBottom: 20,
               paddingHorizontal: 20,
               backgroundColor: COLORS.WHITE,
             }}
           >
+            {selectedExerciseList.length > 0 && (
+              <View
+                style={{
+                  alignItems: 'center',
+                }}
+              >
+                <View
+                  style={{
+                    width: 47,
+                    height: 4,
+                    backgroundColor: COLORS.GRAY[400],
+                    borderRadius: 2,
+                    marginBottom: 12,
+                  }}
+                />
+                <ScrollView
+                  showsHorizontalScrollIndicator={false}
+                  horizontal
+                  style={{
+                    width: WIDTH,
+                    paddingBottom: 18,
+                    paddingHorizontal: 20,
+                  }}
+                  contentContainerStyle={{
+                    alignItems: 'flex-start',
+                  }}
+                >
+                  {selectedExerciseList.map(item => (
+                    <View
+                      row
+                      key={item.id}
+                      style={{
+                        marginRight: 8,
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <Text body3>{item.name}</Text>
+                      <TouchableOpacity
+                        activeOpacity={0.8}
+                        onPress={() => removeExerciseFromWorkoutPlan(item.id)}
+                      >
+                        <Icon name="Cancel" size={16} />
+                      </TouchableOpacity>
+                    </View>
+                  ))}
+                </ScrollView>
+              </View>
+            )}
             <Button onPress={makeWorkoutPlan}>운동추가</Button>
           </View>
         </Shadow>
