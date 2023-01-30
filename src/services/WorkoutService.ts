@@ -12,3 +12,13 @@ export const getWorkoutStimulationBodyPartByOrder = async () => {
     console.error(e.message);
   }
 };
+
+export const getWorkoutExerciseByBodyPart = async (bodyPart: string) => {
+  try {
+    const result = await WorkoutAPI.getWorkoutExerciseByBodyPart(bodyPart);
+
+    return result;
+  } catch (e: any) {
+    console.error(e.messsage);
+  }
+};
