@@ -1,4 +1,5 @@
-import { Image, ImageSourcePropType } from 'react-native';
+import React from 'react';
+import { Image, ImageSourcePropType, TouchableOpacity } from 'react-native';
 import { Icon, Text, View } from '../../../components/Common';
 import { COLORS } from '../../../constants';
 
@@ -6,20 +7,23 @@ type Props = {
   selected: boolean;
   thumbnail: ImageSourcePropType;
   name: string;
+  onPress: () => void;
 };
 
 export function Exercise(props: Props) {
-  const { selected, thumbnail, name } = props;
+  const { selected, thumbnail, name, onPress } = props;
 
   return (
-    <View
+    <TouchableOpacity
       style={{
+        flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 24,
         paddingVertical: 15,
       }}
-      row
+      activeOpacity={0.8}
+      onPress={onPress}
     >
       <View
         row
@@ -62,7 +66,9 @@ export function Exercise(props: Props) {
           {name}
         </Text>
       </View>
-      <Icon name="MoreInfo" size={20} width={20} height={20} />
-    </View>
+      <TouchableOpacity activeOpacity={0.8}>
+        <Icon name="Info" size={20} width={20} height={20} />
+      </TouchableOpacity>
+    </TouchableOpacity>
   );
 }

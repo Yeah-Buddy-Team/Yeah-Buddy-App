@@ -1,42 +1,24 @@
-import { ScrollView } from 'react-native';
-import { View } from '../../components/Common';
+import { ScrollView, useWindowDimensions } from 'react-native';
+import { View, Button } from '../../components/Common';
 import { HeaderLayout } from '../../layouts';
 import { useSelectWorkoutExerciseByBodyPart } from './useSelectWorkoutExerciseByBodyPart';
 import { BodyPart, Exercise } from './components';
-import { COLORS } from '../../constants';
+import { COLORS, WorkoutStimulationBodyPartObj } from '../../constants';
 import TempExerciseImg from '../../assets/images/TempExerciseImg.png';
-
-export const BodyParts = [
-  '팔(이두)',
-  '팔(삼두)',
-  '어깨',
-  '가슴',
-  '등',
-  '하체',
-  '유산소',
-  '기타',
-];
-
-const tempArr = [
-  '가',
-  '나',
-  '다',
-  '라',
-  '마',
-  '바',
-  '사',
-  '아',
-  '자',
-  '차',
-  '카',
-  '타',
-  '파',
-  '하',
-];
+import { Shadow } from 'react-native-shadow-2';
 
 export function SelectWorkoutExerciseByBodyPart() {
-  const { selectedBodyPart, addExerciseToWorkoutPlan, changeBodyPart } =
-    useSelectWorkoutExerciseByBodyPart();
+  const {
+    exerciseList,
+    selectedBodyPart,
+    selectedExerciseList,
+    workoutStimulationBodyParts,
+    changeSelectedBodyPart,
+    addExerciseToWorkoutPlan,
+    removeExerciseFromWorkoutPlan,
+    makeWorkoutPlan,
+  } = useSelectWorkoutExerciseByBodyPart();
+  const { width: WIDTH } = useWindowDimensions();
 
   return (
     <HeaderLayout headerTitle="운동 시작하기">
@@ -53,15 +35,20 @@ export function SelectWorkoutExerciseByBodyPart() {
           }}
           showsHorizontalScrollIndicator={false}
         >
-          {BodyParts.map((item, index) => (
-            <BodyPart
-              onPress={changeBodyPart}
-              label={item}
-              key={item}
-              selected={selectedBodyPart === item}
-              last={index === 7}
-            />
-          ))}
+          {workoutStimulationBodyParts.map((item, index) => {
+            if (!WorkoutStimulationBodyPartObj.hasOwnProperty(item.key)) return;
+            const target = WorkoutStimulationBodyPartObj[item.key];
+
+            return (
+              <BodyPart
+                onPress={() => changeSelectedBodyPart(item.key)}
+                label={target.name}
+                key={item.key}
+                selected={selectedBodyPart === item.key}
+                last={index === 7}
+              />
+            );
+          })}
         </ScrollView>
         <ScrollView
           style={{
@@ -70,12 +57,17 @@ export function SelectWorkoutExerciseByBodyPart() {
           overScrollMode="never"
           showsVerticalScrollIndicator={false}
         >
-          {tempArr.map(item => (
-            <>
+          {exerciseList.map(item => (
+            <View key={item.id}>
               <Exercise
-                selected={true}
-                name={item}
+                selected={selectedExerciseList.includes(item)}
+                name={item.name}
                 thumbnail={TempExerciseImg}
+                onPress={() => {
+                  if (selectedExerciseList.includes(item))
+                    removeExerciseFromWorkoutPlan(item.id);
+                  else addExerciseToWorkoutPlan(item);
+                }}
               />
               <View
                 style={{
@@ -85,9 +77,30 @@ export function SelectWorkoutExerciseByBodyPart() {
                   borderWidth: 0.5,
                 }}
               />
-            </>
+            </View>
           ))}
         </ScrollView>
+        <Shadow
+          startColor="rgba(0, 0, 0, 0.08)"
+          offset={[0, -1]}
+          style={{
+            borderRadius: 4,
+          }}
+        >
+          <View
+            style={{
+              width: WIDTH,
+              height: 85,
+              borderTopColor: COLORS.GRAY[300],
+              borderTopWidth: 1,
+              paddingTop: 16,
+              paddingHorizontal: 20,
+              backgroundColor: COLORS.WHITE,
+            }}
+          >
+            <Button onPress={makeWorkoutPlan}>운동추가</Button>
+          </View>
+        </Shadow>
       </View>
     </HeaderLayout>
   );
