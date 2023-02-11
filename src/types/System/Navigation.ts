@@ -1,6 +1,6 @@
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { StimulationBodyPart } from '../Model';
+import { Exercise, StimulationBodyPart } from '../Model';
 
 export enum RootStack {
   SignIn = 'SignIn', // 로그인 화면
@@ -18,6 +18,9 @@ export type RootStackParamList = {
   [RootStack.SelectWorkoutExerciseByBodyPart]: {
     workoutStimulationBodyParts: StimulationBodyPart[];
     selectedStimulationBodyPart: string;
+  };
+  [RootStack.MakeWorkoutPlan]: {
+    exerciseList: Exercise[];
   };
 } & {
   [P in RootStack]?: {};

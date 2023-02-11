@@ -1,6 +1,8 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React from 'react';
+import { Alert } from 'react-native';
 import { WorkoutService } from '../../services';
+import { Exercise } from '../../types/Model';
 import {
   RootRouteProps,
   RootStack,
@@ -16,11 +18,9 @@ export const useSelectWorkoutExerciseByBodyPart = () => {
     params: { workoutStimulationBodyParts, selectedStimulationBodyPart },
   } = useRoute<RootRouteProps[RootStack.SelectWorkoutExerciseByBodyPart]>();
 
-  const [exerciseList, setExerciseList] = React.useState<
-    { id: number; name: string; category: string; order: number }[]
-  >([]);
+  const [exerciseList, setExerciseList] = React.useState<Exercise[]>([]);
   const [selectedExerciseList, setSelectedExerciseList] = React.useState<
-    { id: number; name: string; category: string; order: number }[]
+    Exercise[]
   >([]);
   const [selectedBodyPart, setSelectedBodyPart] = React.useState<string>(
     selectedStimulationBodyPart,
@@ -30,12 +30,7 @@ export const useSelectWorkoutExerciseByBodyPart = () => {
     setSelectedBodyPart(targetBodyPart);
   };
 
-  const addExerciseToWorkoutPlan = (exercise: {
-    id: number;
-    name: string;
-    category: string;
-    order: number;
-  }) => {
+  const addExerciseToWorkoutPlan = (exercise: Exercise) => {
     setSelectedExerciseList(prev => prev.concat(exercise));
   };
 
@@ -46,7 +41,14 @@ export const useSelectWorkoutExerciseByBodyPart = () => {
   };
 
   const makeWorkoutPlan = () => {
-    navigation.push(RootStack.MakeWorkoutPlan);
+    if (selectedExerciseList.length < 1) {
+      Alert.alert('운동을 추가해주세요');
+      return;
+    }
+
+    navigation.push(RootStack.MakeWorkoutPlan, {
+      exerciseList: selectedExerciseList,
+    });
   };
 
   const getWorkoutExerciseByBodyPart = async (bodyPart: string) => {

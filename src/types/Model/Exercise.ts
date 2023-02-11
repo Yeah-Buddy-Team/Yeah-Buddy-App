@@ -6,6 +6,17 @@ export type StimulationBodyPart = {
 export type Exercise = {
   id: number;
   name: string;
+  category: string;
   order: number;
-  thumnbnailUrl: string;
+};
+
+export type WorkoutCount = {
+  set: number;
+  kg: number;
+  reps: number;
+  completed: boolean;
+};
+
+export type WorkoutPlan = Exercise & {
+  workoutCount: WorkoutCount[];
 };
