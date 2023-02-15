@@ -1,0 +1,10 @@
+//
+//  Config.xcconfig
+//  YeahBuddyApp
+//
+//  Created by 손완서 on 2022/12/04.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+#include? "tmp.xcconfig"

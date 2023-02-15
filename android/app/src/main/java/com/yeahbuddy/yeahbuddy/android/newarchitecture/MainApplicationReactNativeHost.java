@@ -1,4 +1,4 @@
-package com.yeahbuddyapp.newarchitecture;
+package com.yeahbuddy.yeahbuddy.android.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.yeahbuddyapp.BuildConfig;
-import com.yeahbuddyapp.newarchitecture.components.MainComponentsRegistry;
-import com.yeahbuddyapp.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.yeahbuddy.yeahbuddy.android.BuildConfig;
+import com.yeahbuddy.yeahbuddy.android.newarchitecture.components.MainComponentsRegistry;
+import com.yeahbuddy.yeahbuddy.android.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
