@@ -49,6 +49,8 @@ export const useSelectWorkoutExerciseByBodyPart = () => {
     navigation.push(RootStack.MakeWorkoutPlan, {
       exerciseList: selectedExerciseList,
     });
+
+    setSelectedExerciseList([]);
   };
 
   const getWorkoutExerciseByBodyPart = async (bodyPart: string) => {

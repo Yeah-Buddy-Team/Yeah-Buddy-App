@@ -1,4 +1,4 @@
-import { useWindowDimensions } from 'react-native';
+import { ScrollView, useWindowDimensions } from 'react-native';
 import { Shadow } from 'react-native-shadow-2';
 import { Button, View } from '../../components/Common';
 import { COLORS } from '../../constants';
@@ -7,29 +7,45 @@ import { WorkoutPlan } from './components';
 import { useMakeWorkoutPlan } from './useMakeWorkoutPlan';
 
 export function MakeWorkoutPlan() {
-  const { workoutPlan, addWorkoutCount } = useMakeWorkoutPlan();
+  const {
+    workoutPlans,
+    removeWorkoutPlan,
+    addWorkoutCount,
+    modifyWorkoutCountKg,
+    modifyWorkoutCountReps,
+    modifyWorkoutCountCompleted,
+    removeWorkoutCount,
+  } = useMakeWorkoutPlan();
   const { width: WIDTH } = useWindowDimensions();
 
   return (
     <HeaderLayout headerTitle="운동 시작하기">
       <View fill>
-        <View
-          fill
+        <ScrollView
           style={{
-            marginTop: 20,
+            flex: 1,
+            paddingTop: 20,
+            paddingBottom: 200,
             marginHorizontal: 20,
           }}
+          showsVerticalScrollIndicator={false}
         >
-          {workoutPlan.map(item => (
+          {workoutPlans.map((item, index) => (
             <WorkoutPlan
               key={item.id}
               stimulationBodyPart={item.category}
               exerciseName={item.name}
               workoutCounts={item.workoutCount}
+              onPressRemove={() => removeWorkoutPlan(item.id)}
               onPressAddSet={() => addWorkoutCount(item.id)}
+              onBlurModifyKg={modifyWorkoutCountKg(item.id)}
+              onBlurModifyReps={modifyWorkoutCountReps(item.id)}
+              onPressModifyCompleted={modifyWorkoutCountCompleted(item.id)}
+              onPressRemoveSet={() => removeWorkoutCount(item.id)}
+              last={index === workoutPlans.length - 1}
             />
           ))}
-        </View>
+        </ScrollView>
         <Shadow
           startColor="rgba(0, 0, 0, 0.08)"
           offset={[0, -1]}

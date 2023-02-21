@@ -1,14 +1,20 @@
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import React from 'react';
 import { WorkoutCount, WorkoutPlan } from '../../types/Model';
-import { RootRouteProps, RootStack } from '../../types/System';
+import {
+  RootRouteProps,
+  RootStack,
+  RootStackNavigationProps,
+} from '../../types/System';
 
 export const useMakeWorkoutPlan = () => {
   const {
     params: { exerciseList },
   } = useRoute<RootRouteProps[RootStack.MakeWorkoutPlan]>();
+  const navigation =
+    useNavigation<RootStackNavigationProps[RootStack.MakeWorkoutPlan]>();
 
-  const [workoutPlan, setWorkoutPlan] = React.useState<WorkoutPlan[]>([]);
+  const [workoutPlans, setWorkoutPlans] = React.useState<WorkoutPlan[]>([]);
 
   React.useEffect(() => {
     const workoutCountInit: WorkoutCount = {
@@ -24,13 +30,24 @@ export const useMakeWorkoutPlan = () => {
       }),
     );
 
-    setWorkoutPlan(workoutPlanInit);
+    setWorkoutPlans(workoutPlanInit);
   }, []);
 
-  const addWorkoutCount = (exerciseId: number) => {
-    const copyOfWorkoutPlan = [...workoutPlan];
+  const removeWorkoutPlan = (exerciseId: number) => {
+    let copyOfWorkoutPlans = [...workoutPlans];
 
-    const targetWorkout = copyOfWorkoutPlan.find(
+    copyOfWorkoutPlans = copyOfWorkoutPlans.filter(
+      item => item.id !== exerciseId,
+    );
+
+    if (copyOfWorkoutPlans.length < 1) navigation.goBack();
+    setWorkoutPlans(copyOfWorkoutPlans);
+  };
+
+  const addWorkoutCount = (exerciseId: number) => {
+    const copyOfWorkoutPlans = [...workoutPlans];
+
+    const targetWorkout = copyOfWorkoutPlans.find(
       item => item.id === exerciseId,
     );
 
@@ -46,11 +63,83 @@ export const useMakeWorkoutPlan = () => {
     targetWorkout.workoutCount =
       targetWorkout.workoutCount.concat(emptyWorkoutCount);
 
-    setWorkoutPlan(copyOfWorkoutPlan);
+    setWorkoutPlans(copyOfWorkoutPlans);
+  };
+
+  const modifyWorkoutCountKg =
+    (exerciseId: number) => (set: number, kg: number) => {
+      const copyOfWorkoutPlans = [...workoutPlans];
+
+      const targetWorkout = copyOfWorkoutPlans.find(
+        item => item.id === exerciseId,
+      );
+      const targetWorkoutCount = targetWorkout?.workoutCount.find(
+        item => item.set === set,
+      );
+
+      if (!targetWorkoutCount) return;
+
+      targetWorkoutCount.kg = kg;
+
+      setWorkoutPlans(copyOfWorkoutPlans);
+    };
+
+  const modifyWorkoutCountReps =
+    (exerciseId: number) => (set: number, reps: number) => {
+      const copyOfWorkoutPlans = [...workoutPlans];
+
+      const targetWorkout = copyOfWorkoutPlans.find(
+        item => item.id === exerciseId,
+      );
+      const targetWorkoutCount = targetWorkout?.workoutCount.find(
+        item => item.set === set,
+      );
+
+      if (!targetWorkoutCount) return;
+
+      targetWorkoutCount.reps = reps;
+
+      setWorkoutPlans(copyOfWorkoutPlans);
+    };
+
+  const modifyWorkoutCountCompleted = (exerciseId: number) => (set: number) => {
+    const copyOfWorkoutPlans = [...workoutPlans];
+
+    const targetWorkout = copyOfWorkoutPlans.find(
+      item => item.id === exerciseId,
+    );
+    const targetWorkoutCount = targetWorkout?.workoutCount.find(
+      item => item.set === set,
+    );
+
+    if (!targetWorkoutCount) return;
+
+    targetWorkoutCount.completed = !targetWorkoutCount.completed;
+
+    setWorkoutPlans(copyOfWorkoutPlans);
+  };
+
+  const removeWorkoutCount = (exerciseId: number) => {
+    const copyOfWorkoutPlans = [...workoutPlans];
+
+    const targetWorkout = copyOfWorkoutPlans.find(
+      item => item.id === exerciseId,
+    );
+
+    if (!targetWorkout) return;
+
+    targetWorkout.workoutCount.pop();
+
+    setWorkoutPlans(copyOfWorkoutPlans);
   };
 
   return {
-    workoutPlan,
+    workoutPlans,
+    removeWorkoutPlan,
     addWorkoutCount,
+    modifyWorkoutCountKg,
+    modifyWorkoutCountReps,
+    modifyWorkoutCountCompleted,
+    removeWorkoutCount,
   };
 };

@@ -1,12 +1,14 @@
+import { TouchableOpacity } from 'react-native';
 import { Icon, Text, View } from '../../../components/Common';
 
 type Props = {
   stimulationBodyPart: string;
   exerciseName: string;
+  onPressRemove: () => void;
 };
 
 export function WorkoutInfoBox(props: Props) {
-  const { stimulationBodyPart, exerciseName } = props;
+  const { stimulationBodyPart, exerciseName, onPressRemove } = props;
 
   return (
     <View
@@ -36,7 +38,9 @@ export function WorkoutInfoBox(props: Props) {
         </Text>
         <Text body2>{exerciseName}</Text>
       </View>
-      <Icon name="Delete" />
+      <TouchableOpacity onPress={onPressRemove} activeOpacity={0.8}>
+        <Icon name="Delete" />
+      </TouchableOpacity>
     </View>
   );
 }
