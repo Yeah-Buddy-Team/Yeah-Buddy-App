@@ -40,6 +40,10 @@ export const useSelectWorkoutExerciseByBodyPart = () => {
     );
   };
 
+  const showExerciseDetailModal = () => {
+    navigation.push(RootStack.ExerciseDetails);
+  };
+
   const makeWorkoutPlan = () => {
     if (selectedExerciseList.length < 1) {
       Alert.alert('운동을 추가해주세요');
@@ -72,6 +76,7 @@ export const useSelectWorkoutExerciseByBodyPart = () => {
     changeSelectedBodyPart,
     addExerciseToWorkoutPlan,
     removeExerciseFromWorkoutPlan,
+    showExerciseDetailModal,
     makeWorkoutPlan,
   };
 };

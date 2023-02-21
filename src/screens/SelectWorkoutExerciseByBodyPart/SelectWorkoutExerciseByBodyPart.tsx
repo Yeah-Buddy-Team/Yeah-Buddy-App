@@ -20,6 +20,7 @@ export function SelectWorkoutExerciseByBodyPart() {
     changeSelectedBodyPart,
     addExerciseToWorkoutPlan,
     removeExerciseFromWorkoutPlan,
+    showExerciseDetailModal,
     makeWorkoutPlan,
   } = useSelectWorkoutExerciseByBodyPart();
   const { width: WIDTH } = useWindowDimensions();
@@ -72,6 +73,7 @@ export function SelectWorkoutExerciseByBodyPart() {
                     removeExerciseFromWorkoutPlan(item.id);
                   else addExerciseToWorkoutPlan(item);
                 }}
+                onPressInfo={showExerciseDetailModal}
               />
               <View
                 style={{

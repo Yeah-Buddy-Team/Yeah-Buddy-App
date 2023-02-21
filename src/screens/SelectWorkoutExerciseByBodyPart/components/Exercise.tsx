@@ -8,10 +8,11 @@ type Props = {
   thumbnail: ImageSourcePropType;
   name: string;
   onPress: () => void;
+  onPressInfo: () => void;
 };
 
 export function Exercise(props: Props) {
-  const { selected, thumbnail, name, onPress } = props;
+  const { selected, thumbnail, name, onPress, onPressInfo } = props;
 
   return (
     <TouchableOpacity
@@ -66,7 +67,7 @@ export function Exercise(props: Props) {
           {name}
         </Text>
       </View>
-      <TouchableOpacity activeOpacity={0.8}>
+      <TouchableOpacity activeOpacity={0.8} onPress={onPressInfo}>
         <Icon name="Info" size={20} width={20} height={20} />
       </TouchableOpacity>
     </TouchableOpacity>
