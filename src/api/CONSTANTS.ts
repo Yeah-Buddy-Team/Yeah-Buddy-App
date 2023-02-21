@@ -1,5 +1,5 @@
 export const POST_KAKAO_SIGN_IN = (accessToken: string, refreshToken: string) =>
-  `/login/oauth/KAKAO?accessToken=${accessToken}&refreshToken=${refreshToken}`;
+  `/login/oauth/KAKAO?accessToken=Bearer ${accessToken}&refreshToken=Bearer ${refreshToken}`;
 
 // Workout
 export const GET_WORKOUT_STIMULATION_BODY_PARTS = () =>
