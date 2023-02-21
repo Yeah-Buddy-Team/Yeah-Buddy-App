@@ -8,6 +8,7 @@ export enum RootStack {
   WorkoutPlan = 'WorkoutPlan', // 운동 계획 화면
   SelectWorkoutStimulationBodyPart = 'SelectWorkoutStimulationBodyPart', // 운동 계획 자극 부위 선택 화면
   SelectWorkoutExerciseByBodyPart = 'SelectWorkoutExerciseByBodyPart', // 자극 부위 별 운동 선택 화면
+  ExerciseDetails = 'ExerciseDetails', // 운동 상세 정보 화면 (모달)
   MakeWorkoutPlan = 'MakeWorkoutPlan', // 운동 계획 세우기 화면
   Calendar = 'Calendar', // 캘린더 화면
   Friends = 'Friends', // 친구 화면

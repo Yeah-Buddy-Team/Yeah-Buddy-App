@@ -6,6 +6,7 @@ import {
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import * as RootScreens from '../screens';
+import * as ModalScreens from '../screens/modal';
 import { RootStack, RootStackParamList } from '../types/System';
 import { COLORS } from '../constants';
 import BottomTabNavigator from './BottomTabNavigator';
@@ -50,14 +51,10 @@ export default function (): React.ReactElement | null {
             name={name as RootStack}
           />
         ))}
-      </Stack.Navigator>
-      {/* <Stack.Group
+        <Stack.Group
           screenOptions={{
-            // cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
-            cardStyleInterpolator:
-              Platform.OS === 'ios'
-                ? CardStyleInterpolators.forVerticalIOS
-                : CardStyleInterpolators.forBottomSheetAndroid,
+            presentation: 'transparentModal',
+            animation: 'slide_from_bottom',
           }}
         >
           {Object.entries(ModalScreens).map(([name, component]) => (
@@ -67,7 +64,8 @@ export default function (): React.ReactElement | null {
               name={name as RootStack}
             />
           ))}
-        </Stack.Group> */}
+        </Stack.Group>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
