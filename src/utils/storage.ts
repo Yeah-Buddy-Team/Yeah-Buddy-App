@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import EncryptedStorage from 'react-native-encrypted-storage/lib/typescript/EncryptedStorage';
+import EncryptedStorage from 'react-native-encrypted-storage';
 
 export const setItemAsyncStorage = async (
   key: string,
