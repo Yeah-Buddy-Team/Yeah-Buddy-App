@@ -62,7 +62,7 @@ export const getItemEncryptedStorage = async (key: string) => {
   try {
     const value = (await EncryptedStorage.getItem(key)) ?? 'null';
 
-    return value;
+    return JSON.parse(value);
   } catch (e) {
     console.error(e);
     throw e;
