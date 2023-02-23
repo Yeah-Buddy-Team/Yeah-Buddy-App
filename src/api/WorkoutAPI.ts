@@ -1,54 +1,26 @@
+import { AxiosResponse } from 'axios';
+import { getItemEncryptedStorage } from '../utils';
 import {
   GET_WORKOUT_EXERCISE_BY_BODY_PART,
   GET_WORKOUT_STIMULATION_BODY_PARTS,
 } from './CONSTANTS';
 import axios from './default';
 
-export const getWorkoutStimulationBodyParts = async () => {
+export const getWorkoutStimulationBodyParts = async (): Promise<
+  { key: string; order: number }[] | undefined
+> => {
   try {
-    // const url = GET_WORKOUT_STIMULATION_BODY_PARTS();
+    const url = GET_WORKOUT_STIMULATION_BODY_PARTS();
 
-    // const response = await axios.get(url);
+    const accessToken = await getItemEncryptedStorage('ACCESS_TOKEN');
 
-    // return response.data;
-    return [
-      {
-        key: 'BICEPS',
-        order: 1,
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: accessToken,
       },
-      {
-        key: 'TRICEPS',
-        order: 2,
-      },
-      {
-        key: 'SHOULDER',
-        order: 3,
-      },
-      {
-        key: 'CHEST',
-        order: 4,
-      },
-      {
-        key: 'BACK',
-        order: 5,
-      },
-      {
-        key: 'LOWER_BODY',
-        order: 6,
-      },
-      {
-        key: 'ABS',
-        order: 7,
-      },
-      {
-        key: 'CARDIO',
-        order: 8,
-      },
-      {
-        key: 'ETC',
-        order: 9,
-      },
-    ];
+    });
+
+    return response.data;
   } catch (e: any) {
     console.error(e.message);
   }
