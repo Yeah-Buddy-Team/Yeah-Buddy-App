@@ -1,5 +1,6 @@
 import { TouchableOpacity } from 'react-native';
 import { Icon, Text, View } from '../../../components/Common';
+import { WorkoutStimulationBodyPartObj } from '../../../constants';
 
 type Props = {
   stimulationBodyPart: string;
@@ -34,7 +35,7 @@ export function WorkoutInfoBox(props: Props) {
             marginRight: 12,
           }}
         >
-          {stimulationBodyPart}
+          {WorkoutStimulationBodyPartObj[stimulationBodyPart].name}
         </Text>
         <Text body2>{exerciseName}</Text>
       </View>
