@@ -8,6 +8,9 @@ export type Exercise = {
   name: string;
   category: string;
   order: number;
+  countable: boolean;
+  timeable: boolean;
+  weightable: boolean;
 };
 
 export type WorkoutCount = {
