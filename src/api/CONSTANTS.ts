@@ -5,4 +5,4 @@ export const POST_KAKAO_SIGN_IN = (accessToken: string, refreshToken: string) =>
 export const GET_WORKOUT_STIMULATION_BODY_PARTS = () =>
   `/workout-stimulation-body-parts`;
 export const GET_WORKOUT_EXERCISE_BY_BODY_PART = (bodyPart: string) =>
-  `/workouts?bodyPart=${bodyPart}`;
+  `/workouts?workoutStimulationBodyPart=${bodyPart}`;
