@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, TouchableOpacity } from 'react-native';
+import { Image, TouchableOpacity, useWindowDimensions } from 'react-native';
 import KakaoSignInBtn from '../../assets/images/KakaoSignInBtn.png';
 import Logo from '../../assets/images/Logo.png';
 import { View } from '../../components/Common';
@@ -7,7 +7,8 @@ import { COLORS } from '../../constants';
 import { useSignIn } from './useSignIn';
 
 export function SignIn() {
-  const { WIDTH, signInWithKakao } = useSignIn();
+  const { width: WIDTH } = useWindowDimensions();
+  const { signInWithKakao } = useSignIn();
 
   return (
     <View
