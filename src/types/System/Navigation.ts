@@ -20,6 +20,9 @@ export type RootStackParamList = {
     workoutStimulationBodyParts: StimulationBodyPart[];
     selectedStimulationBodyPart: string;
   };
+  [RootStack.ExerciseDetails]: {
+    exerciseId: number;
+  };
   [RootStack.MakeWorkoutPlan]: {
     exerciseList: Exercise[];
   };
