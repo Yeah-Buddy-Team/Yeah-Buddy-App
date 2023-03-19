@@ -44,11 +44,15 @@ export const useSelectWorkoutExerciseByBodyPart = () => {
     navigation.push(RootStack.ExerciseDetails, { exerciseId });
   };
 
-  const makeWorkoutPlan = () => {
+  const makeWorkoutPlan = async () => {
     if (selectedExerciseList.length < 1) {
       Alert.alert('운동을 추가해주세요');
       return;
     }
+
+    const workoutIdArr = selectedExerciseList.map((item) => item.id);
+
+    await WorkoutService.postWorkoutPlans(workoutIdArr);
 
     navigation.push(RootStack.MakeWorkoutPlan, {
       exerciseList: selectedExerciseList,

@@ -8,3 +8,4 @@ export const GET_WORKOUT_EXERCISE_BY_BODY_PART = (bodyPart: string) =>
   `/workouts?workoutStimulationBodyPart=${bodyPart}`;
 export const GET_EXERCISE_DETAILS = (exerciseId: number) =>
   `/workouts/${exerciseId}`;
+export const POST_WORKOUT_PLANS = (workoutDate: string) => `/workout-plans/${workoutDate}/workout-training-plans`;

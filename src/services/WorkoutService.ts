@@ -32,3 +32,13 @@ export const getExerciseDetails = async (exerciseId: number) => {
     console.error(e.message);
   }
 };
+
+export const postWorkoutPlans = async (workoutIdArr: number[]) => {
+  try {
+    const result = await WorkoutAPI.postWorkoutPlans(workoutIdArr);
+
+    return result;
+  } catch (e: any) {
+    console.error(e.message);
+  }
+};
