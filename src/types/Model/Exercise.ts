@@ -23,3 +23,8 @@ export type WorkoutCount = {
 export type WorkoutPlan = Exercise & {
   workoutCount: WorkoutCount[];
 };
+
+export type ExerciseDetails = Exercise & {
+  description: string[];
+  imageUrl: string;
+}
