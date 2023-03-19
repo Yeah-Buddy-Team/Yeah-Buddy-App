@@ -1,4 +1,4 @@
-import { getItemEncryptedStorage } from '../utils';
+import { getCurrentDate, getItemEncryptedStorage } from '../utils';
 import {
   GET_EXERCISE_DETAILS,
   GET_WORKOUT_EXERCISE_BY_BODY_PART,
@@ -65,13 +65,7 @@ export const getExerciseDetails = async (exerciseId: number) => {
 
 export const postWorkoutPlans = async (workoutIdArr: number[]) => {
   try {
-    const currentDate = new Date();
-
-    const year = currentDate.getFullYear();
-    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
-    const date = (currentDate.getDate()).toString().padStart(2, '0');
-
-    const workoutDate = `${year}-${month}-${date}`;
+    const workoutDate = getCurrentDate();
 
     const url = POST_WORKOUT_PLANS(workoutDate);
 
