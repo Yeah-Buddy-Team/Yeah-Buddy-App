@@ -73,7 +73,7 @@ export function SelectWorkoutExerciseByBodyPart() {
                     removeExerciseFromWorkoutPlan(item.id);
                   else addExerciseToWorkoutPlan(item);
                 }}
-                onPressInfo={showExerciseDetailModal}
+                onPressInfo={() => showExerciseDetailModal(item.id)}
               />
               <View
                 style={{

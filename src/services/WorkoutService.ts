@@ -22,3 +22,13 @@ export const getWorkoutExerciseByBodyPart = async (bodyPart: string) => {
     console.error(e.messsage);
   }
 };
+
+export const getExerciseDetails = async (exerciseId: number) => {
+  try {
+    const result = await WorkoutAPI.getExerciseDetails(exerciseId);
+
+    return result;
+  } catch (e: any) {
+    console.error(e.message);
+  }
+};

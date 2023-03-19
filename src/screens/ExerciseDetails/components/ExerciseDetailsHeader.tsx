@@ -3,12 +3,12 @@ import { Icon, Text, View } from '../../../components/Common';
 import { COLORS } from '../../../constants';
 
 type Props = {
-  exerciseName: string;
+  exerciseName?: string;
   onPressCancel: () => void;
 };
 
 export const ExerciseDetailsHeader = (props: Props) => {
-  const { exerciseName, onPressCancel } = props;
+  const { exerciseName = '', onPressCancel } = props;
 
   return (
     <View

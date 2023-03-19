@@ -1,5 +1,6 @@
 import { getItemEncryptedStorage } from '../utils';
 import {
+  GET_EXERCISE_DETAILS,
   GET_WORKOUT_EXERCISE_BY_BODY_PART,
   GET_WORKOUT_STIMULATION_BODY_PARTS,
 } from './CONSTANTS';
@@ -43,19 +44,20 @@ export const getWorkoutExerciseByBodyPart = async (bodyPart: string) => {
   }
 };
 
-const tempArr = [
-  '가',
-  '나',
-  '다',
-  '라',
-  '마',
-  '바',
-  '사',
-  '아',
-  '자',
-  '차',
-  '카',
-  '타',
-  '파',
-  '하',
-];
+export const getExerciseDetails = async (exerciseId: number) => {
+  try {
+    const url = GET_EXERCISE_DETAILS(exerciseId);
+
+    const accessToken = await getItemEncryptedStorage('ACCESS_TOKEN');
+
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: accessToken,
+      },
+    });
+
+    return response.data;
+  } catch (e: any) {
+    console.error(e.message);
+  }
+};

@@ -7,7 +7,7 @@ import { ExerciseDetailsBody } from './components/ExerciseDetailsBody';
 import { useExerciseDetails } from './useExerciseDetails';
 
 export function ExerciseDetails() {
-  const { onPressCancel } = useExerciseDetails();
+  const { exerciseDetails, onPressCancel } = useExerciseDetails();
 
   return (
     <ModalLayout>
@@ -24,14 +24,14 @@ export function ExerciseDetails() {
         onTouchEnd={e => e.stopPropagation()}
       >
         <ExerciseDetailsHeader
-          exerciseName="푸시업"
+          exerciseName={exerciseDetails?.name}
           onPressCancel={onPressCancel}
         />
         <ExerciseDetailsBody
-          exerciseStimulationBodyPart="가슴"
+          exerciseStimulationBodyPart={exerciseDetails?.category}
           exerciseType="횟수"
           exerciseExplanation={
-            '1. 팔을 가슴 옆에 두고 바닥에 엎드립니다.\n2. 복근과 둔근에 힘을 준 상태로 팔꿈치를 피며 올라옵니다.\n3. 천천히 팔꿈치를 굽히며 시작 자세로 돌아갑니다.'
+            exerciseDetails?.description
           }
         />
       </View>

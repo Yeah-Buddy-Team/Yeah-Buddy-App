@@ -40,8 +40,8 @@ export const useSelectWorkoutExerciseByBodyPart = () => {
     );
   };
 
-  const showExerciseDetailModal = () => {
-    navigation.push(RootStack.ExerciseDetails);
+  const showExerciseDetailModal = (exerciseId: number) => {
+    navigation.push(RootStack.ExerciseDetails, { exerciseId });
   };
 
   const makeWorkoutPlan = () => {

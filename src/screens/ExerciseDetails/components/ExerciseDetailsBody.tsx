@@ -2,13 +2,13 @@ import { Text, View } from '../../../components/Common';
 import { COLORS } from '../../../constants';
 
 type Props = {
-  exerciseStimulationBodyPart: string;
+  exerciseStimulationBodyPart?: string;
   exerciseType: string;
-  exerciseExplanation: string;
+  exerciseExplanation?: string[];
 };
 
 export const ExerciseDetailsBody = (props: Props) => {
-  const { exerciseStimulationBodyPart, exerciseType, exerciseExplanation } =
+  const { exerciseStimulationBodyPart = '', exerciseType, exerciseExplanation = [''] } =
     props;
 
   return (
@@ -69,7 +69,7 @@ export const ExerciseDetailsBody = (props: Props) => {
         </View>
       </View>
       <View style={{ marginTop: 24 }}>
-        <Text>{exerciseExplanation}</Text>
+        {exerciseExplanation.map((item) => <Text>{item}</Text>)}
       </View>
     </View>
   );
