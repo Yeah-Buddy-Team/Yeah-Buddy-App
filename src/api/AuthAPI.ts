@@ -7,13 +7,16 @@ type PostKakaoSignInParams = {
 };
 
 export const postKaKaoSignIn = async (params: PostKakaoSignInParams) => {
-  try {
-    const url = POST_KAKAO_SIGN_IN(params.accessToken, params.refreshToken);
+  const url = POST_KAKAO_SIGN_IN(params.accessToken, params.refreshToken);
 
-    const response = await axios.post(url);
+  const response = await axios
+    .post(url)
+    .then(res => {
+      return res.data;
+    })
+    .catch(err => {
+      return err;
+    });
 
-    return response.data;
-  } catch (e: any) {
-    console.error(e.message);
-  }
+  return response;
 };

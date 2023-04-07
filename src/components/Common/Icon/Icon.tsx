@@ -5,7 +5,7 @@ import IconMap from './IconMap';
 
 import { Svg } from '../Svg';
 import { View } from '../View';
-import * as COLORS from '../../../constants/Theme';
+import { COLORS } from '../../../constants';
 
 type IconShapeType = 'filled' | 'outlined';
 

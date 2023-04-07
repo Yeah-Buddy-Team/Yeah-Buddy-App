@@ -1,5 +1,13 @@
+import { Button } from 'react-native';
 import { View } from '../../components/Common';
+import { useWorkoutPlan } from './useWorkoutPlan';
 
 export function WorkoutPlan() {
-  return <View></View>;
+  const { createWorkoutPlan } = useWorkoutPlan();
+
+  return (
+    <View>
+      <Button onPress={createWorkoutPlan} title="ㅁㄴㅇㄹ" />
+    </View>
+  );
 }

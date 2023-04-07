@@ -6,15 +6,16 @@ import {
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import * as RootScreens from '../screens';
+import * as ModalScreens from '../screens/modal';
 import { RootStack, RootStackParamList } from '../types/System';
-import { LIGHT_NAVIGATION_THEME } from '../constants';
+import { COLORS } from '../constants';
 import BottomTabNavigator from './BottomTabNavigator';
 
 const Stack = createNativeStackNavigator();
 
 const theme: Theme = {
   dark: false,
-  colors: LIGHT_NAVIGATION_THEME,
+  colors: COLORS.LIGHT_NAVIGATION_THEME,
 };
 
 export default function (): React.ReactElement | null {
@@ -36,7 +37,11 @@ export default function (): React.ReactElement | null {
     >
       <Stack.Navigator
         initialRouteName={initialRoute}
-        screenOptions={{ headerShown: false }}
+        screenOptions={{
+          headerShown: false,
+          animation: 'slide_from_right',
+          animationDuration: 10,
+        }}
       >
         <Stack.Screen key="Root" name="Root" component={BottomTabNavigator} />
         {Object.entries(RootScreens).map(([name, component]) => (
@@ -46,14 +51,10 @@ export default function (): React.ReactElement | null {
             name={name as RootStack}
           />
         ))}
-      </Stack.Navigator>
-      {/* <Stack.Group
+        <Stack.Group
           screenOptions={{
-            // cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
-            cardStyleInterpolator:
-              Platform.OS === 'ios'
-                ? CardStyleInterpolators.forVerticalIOS
-                : CardStyleInterpolators.forBottomSheetAndroid,
+            presentation: 'transparentModal',
+            animation: 'slide_from_bottom',
           }}
         >
           {Object.entries(ModalScreens).map(([name, component]) => (
@@ -63,7 +64,8 @@ export default function (): React.ReactElement | null {
               name={name as RootStack}
             />
           ))}
-        </Stack.Group> */}
+        </Stack.Group>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
