@@ -1,12 +1,22 @@
 import { useNavigation } from '@react-navigation/native';
-import { useWindowDimensions } from 'react-native';
+import React from 'react';
 import { AuthService } from '../../services';
 import { RootStack, RootStackNavigationProps } from '../../types/System';
 
 export const useSignIn = () => {
-  const { width: WIDTH } = useWindowDimensions();
   const navigation =
     useNavigation<RootStackNavigationProps[RootStack.SignIn]>();
+
+  // React.useEffect(() => {
+  //   (async () => {
+  //     await autoSignIn();
+  //   })();
+  // }, []);
+
+  const autoSignIn = async () => {
+    const result = await AuthService.autoSignIn();
+    if (result) navigation.push(RootStack.Root);
+  };
 
   const signInWithKakao = async () => {
     await AuthService.kakaoSignIn();
@@ -14,7 +24,6 @@ export const useSignIn = () => {
   };
 
   return {
-    WIDTH,
     signInWithKakao,
   };
 };

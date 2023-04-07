@@ -1,20 +1,21 @@
 import React from 'react';
-import { Image, TouchableOpacity } from 'react-native';
+import { Image, TouchableOpacity, useWindowDimensions } from 'react-native';
 import KakaoSignInBtn from '../../assets/images/KakaoSignInBtn.png';
 import Logo from '../../assets/images/Logo.png';
 import { View } from '../../components/Common';
-import { INDIGO } from '../../constants';
+import { COLORS } from '../../constants';
 import { useSignIn } from './useSignIn';
 
 export function SignIn() {
-  const { WIDTH, signInWithKakao } = useSignIn();
+  const { width: WIDTH } = useWindowDimensions();
+  const { signInWithKakao } = useSignIn();
 
   return (
     <View
       safe
       fill
       style={{
-        backgroundColor: INDIGO[500],
+        backgroundColor: COLORS.INDIGO[500],
         alignItems: 'center',
         justifyContent: 'space-between',
       }}
@@ -35,7 +36,7 @@ export function SignIn() {
           marginBottom: '14.7%',
         }}
         onPress={signInWithKakao}
-        activeOpacity={0.7}
+        activeOpacity={0.8}
       >
         <Image
           source={KakaoSignInBtn}

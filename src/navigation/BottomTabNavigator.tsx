@@ -5,7 +5,7 @@ import {
 import { TouchableOpacity } from 'react-native';
 import { View, Text, Icon } from '../components/Common';
 import IconMap from '../components/Common/Icon/IconMap';
-import * as COLORS from '../constants';
+import { COLORS } from '../constants';
 import { WorkoutPlan, Calendar, Friends, MyProfile } from '../screens';
 
 const BottomTab = createBottomTabNavigator();
@@ -95,7 +95,7 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
             style={{ flex: 1 }}
             testID={options.tabBarTestID}
             onPress={onPress}
-            activeOpacity={0.7}
+            activeOpacity={0.8}
           >
             <View
               style={{
