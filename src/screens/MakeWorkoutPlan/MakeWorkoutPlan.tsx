@@ -9,12 +9,13 @@ import { useMakeWorkoutPlan } from './useMakeWorkoutPlan';
 export function MakeWorkoutPlan() {
   const {
     workoutPlans,
-    removeWorkoutPlan,
-    addWorkoutCount,
-    modifyWorkoutCountKg,
-    modifyWorkoutCountReps,
-    modifyWorkoutCountCompleted,
-    removeWorkoutCount,
+    removeWorkoutTrainingPlan,
+    addWorkoutSet,
+    modifyWorkoutSetWeight,
+    modifyWorkoutSetCount,
+    modifyWorkoutSetProgressStatus,
+    removeWorkoutSet,
+    finishWorkoutPlan,
   } = useMakeWorkoutPlan();
   const { width: WIDTH } = useWindowDimensions();
 
@@ -30,19 +31,21 @@ export function MakeWorkoutPlan() {
           }}
           showsVerticalScrollIndicator={false}
         >
-          {workoutPlans.map((item, index) => (
+          {workoutPlans?.workoutTrainingPlans.map((item, index) => (
             <WorkoutPlan
               key={item.id}
-              stimulationBodyPart={item.category}
-              exerciseName={item.name}
-              workoutCounts={item.workoutCount}
-              onPressRemove={() => removeWorkoutPlan(item.id)}
-              onPressAddSet={() => addWorkoutCount(item.id)}
-              onBlurModifyKg={modifyWorkoutCountKg(item.id)}
-              onBlurModifyReps={modifyWorkoutCountReps(item.id)}
-              onPressModifyCompleted={modifyWorkoutCountCompleted(item.id)}
-              onPressRemoveSet={() => removeWorkoutCount(item.id)}
-              last={index === workoutPlans.length - 1}
+              stimulationBodyPart={item.workout.category}
+              exerciseName={item.workout.name}
+              workoutSets={item.workoutSets}
+              onPressRemove={() => removeWorkoutTrainingPlan(item.id)}
+              onPressAddSet={() => addWorkoutSet(item.id)}
+              onBlurModifyWeight={modifyWorkoutSetWeight(item.id)}
+              onBlurModifyCount={modifyWorkoutSetCount(item.id)}
+              onPressModifyProgressStatus={modifyWorkoutSetProgressStatus(
+                item.id,
+              )}
+              onPressRemoveSet={() => removeWorkoutSet(item.id)}
+              last={index === workoutPlans.workoutTrainingPlans.length - 1}
             />
           ))}
         </ScrollView>
@@ -64,7 +67,7 @@ export function MakeWorkoutPlan() {
               backgroundColor: COLORS.WHITE,
             }}
           >
-            <Button>운동 끝내기</Button>
+            <Button onPress={finishWorkoutPlan}>운동 끝내기</Button>
           </View>
         </Shadow>
       </View>

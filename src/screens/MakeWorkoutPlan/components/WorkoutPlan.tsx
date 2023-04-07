@@ -1,19 +1,19 @@
 import { View } from '../../../components/Common';
 import { COLORS } from '../../../constants';
-import { WorkoutCount } from '../../../types/Model';
-import { WorkoutCountBox } from './WorkoutCountBox';
+import { WorkoutSet } from '../../../types/Model';
+import { WorkoutSetBox } from './WorkoutSetBox';
 import { WorkoutInfoBox } from './WorkoutInfoBox';
 
 type Props = {
   stimulationBodyPart: string;
   exerciseName: string;
-  workoutCounts: WorkoutCount[];
+  workoutSets: WorkoutSet[];
   last: boolean;
   onPressRemove: () => void;
   onPressAddSet: () => void;
-  onBlurModifyKg: (set: number, kg: number) => void;
-  onBlurModifyReps: (set: number, reps: number) => void;
-  onPressModifyCompleted: (set: number) => void;
+  onBlurModifyWeight: (set: number, kg: number) => void;
+  onBlurModifyCount: (set: number, reps: number) => void;
+  onPressModifyProgressStatus: (set: number) => void;
   onPressRemoveSet: () => void;
 };
 
@@ -21,13 +21,13 @@ export function WorkoutPlan(props: Props) {
   const {
     stimulationBodyPart,
     exerciseName,
-    workoutCounts,
+    workoutSets,
     last,
     onPressRemove,
     onPressAddSet,
-    onBlurModifyKg,
-    onBlurModifyReps,
-    onPressModifyCompleted,
+    onBlurModifyWeight,
+    onBlurModifyCount,
+    onPressModifyProgressStatus,
     onPressRemoveSet,
   } = props;
 
@@ -56,12 +56,12 @@ export function WorkoutPlan(props: Props) {
           marginHorizontal: 0.5,
         }}
       />
-      <WorkoutCountBox
-        workoutCounts={workoutCounts}
+      <WorkoutSetBox
+        workoutSets={workoutSets}
         onPressAddSet={onPressAddSet}
-        onBlurModifyKg={onBlurModifyKg}
-        onBlurModifyReps={onBlurModifyReps}
-        onPressModifyCompleted={onPressModifyCompleted}
+        onBlurModifyWeight={onBlurModifyWeight}
+        onBlurModifyCount={onBlurModifyCount}
+        onPressModifyProgressStatus={onPressModifyProgressStatus}
         onPressRemoveSet={onPressRemoveSet}
       />
     </View>

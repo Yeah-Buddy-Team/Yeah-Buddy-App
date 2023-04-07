@@ -13,18 +13,27 @@ export type Exercise = {
   weightable: boolean;
 };
 
-export type WorkoutCount = {
-  set: number;
-  kg: number;
-  reps: number;
-  completed: boolean;
+export type WorkoutSet = {
+  id: number;
+  weight: number;
+  count: number;
+  seconds?: number;
+  progressStatus: 'NOT_YET' | 'COMPLETED';
 };
 
-export type WorkoutPlan = Exercise & {
-  workoutCount: WorkoutCount[];
+export type WorkoutPlan = {
+  date: number[];
+  workoutTrainingPlans: WorkoutTrainingPlan[];
+};
+
+export type WorkoutTrainingPlan = {
+  id: number;
+  order: number;
+  workout: Exercise;
+  workoutSets: WorkoutSet[];
 };
 
 export type ExerciseDetails = Exercise & {
   description: string[];
   imageUrl: string;
-}
+};

@@ -1,145 +1,117 @@
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { WorkoutCount, WorkoutPlan } from '../../types/Model';
-import {
-  RootRouteProps,
-  RootStack,
-  RootStackNavigationProps,
-} from '../../types/System';
+import { WorkoutService } from '../../services';
+import { WorkoutPlan } from '../../types/Model';
+import { RootStack, RootStackNavigationProps } from '../../types/System';
 
 export const useMakeWorkoutPlan = () => {
-  const {
-    params: { exerciseList },
-  } = useRoute<RootRouteProps[RootStack.MakeWorkoutPlan]>();
   const navigation =
     useNavigation<RootStackNavigationProps[RootStack.MakeWorkoutPlan]>();
 
-  const [workoutPlans, setWorkoutPlans] = React.useState<WorkoutPlan[]>([]);
+  const [workoutPlans, setWorkoutPlans] = React.useState<WorkoutPlan>();
 
   React.useEffect(() => {
-    const workoutCountInit: WorkoutCount = {
-      set: 1,
-      kg: 0,
-      reps: 0,
-      completed: false,
-    };
+    (async () => {
+      const result = await WorkoutService.getWorkoutPlans();
 
-    const workoutPlanInit = exerciseList.map(item =>
-      Object.assign(item, {
-        workoutCount: [workoutCountInit],
-      }),
-    );
-
-    setWorkoutPlans(workoutPlanInit);
+      setWorkoutPlans(result);
+    })();
   }, []);
 
-  const removeWorkoutPlan = (exerciseId: number) => {
-    let copyOfWorkoutPlans = [...workoutPlans];
+  const removeWorkoutTrainingPlan = (workoutTrainingPlanId: number) => {
+    if (!workoutPlans) return;
 
-    copyOfWorkoutPlans = copyOfWorkoutPlans.filter(
-      item => item.id !== exerciseId,
+    const result = WorkoutService.removeWorkoutTrainingPlan(
+      workoutPlans,
+      workoutTrainingPlanId,
     );
 
-    if (copyOfWorkoutPlans.length < 1) navigation.goBack();
-    setWorkoutPlans(copyOfWorkoutPlans);
+    setWorkoutPlans(result);
   };
 
-  const addWorkoutCount = (exerciseId: number) => {
-    const copyOfWorkoutPlans = [...workoutPlans];
+  const addWorkoutSet = (workoutTrainingPlanId: number) => {
+    if (!workoutPlans) return;
 
-    const targetWorkout = copyOfWorkoutPlans.find(
-      item => item.id === exerciseId,
+    const result = WorkoutService.addWorkoutSet(
+      workoutPlans,
+      workoutTrainingPlanId,
     );
 
-    if (!targetWorkout) return;
-
-    const emptyWorkoutCount: WorkoutCount = {
-      set: targetWorkout ? targetWorkout.workoutCount.length + 1 : 1,
-      kg: 0,
-      reps: 0,
-      completed: false,
-    };
-
-    targetWorkout.workoutCount =
-      targetWorkout.workoutCount.concat(emptyWorkoutCount);
-
-    setWorkoutPlans(copyOfWorkoutPlans);
+    setWorkoutPlans(result);
   };
 
-  const modifyWorkoutCountKg =
-    (exerciseId: number) => (set: number, kg: number) => {
-      const copyOfWorkoutPlans = [...workoutPlans];
+  const modifyWorkoutSetWeight =
+    (workoutTrainingPlanId: number) =>
+    (workoutSetId: number, targetWeight: number) => {
+      if (!workoutPlans) return;
 
-      const targetWorkout = copyOfWorkoutPlans.find(
-        item => item.id === exerciseId,
+      const result = WorkoutService.modifyWorkoutSetWeight(
+        workoutPlans,
+        workoutTrainingPlanId,
+        workoutSetId,
+        targetWeight,
       );
-      const targetWorkoutCount = targetWorkout?.workoutCount.find(
-        item => item.set === set,
-      );
 
-      if (!targetWorkoutCount) return;
-
-      targetWorkoutCount.kg = kg;
-
-      setWorkoutPlans(copyOfWorkoutPlans);
+      setWorkoutPlans(result);
     };
 
-  const modifyWorkoutCountReps =
-    (exerciseId: number) => (set: number, reps: number) => {
-      const copyOfWorkoutPlans = [...workoutPlans];
+  const modifyWorkoutSetCount =
+    (workoutTrainingPlanId: number) =>
+    (workoutSetId: number, targetCount: number) => {
+      if (!workoutPlans) return;
 
-      const targetWorkout = copyOfWorkoutPlans.find(
-        item => item.id === exerciseId,
+      const result = WorkoutService.modifyWorkoutSetCount(
+        workoutPlans,
+        workoutTrainingPlanId,
+        workoutSetId,
+        targetCount,
       );
-      const targetWorkoutCount = targetWorkout?.workoutCount.find(
-        item => item.set === set,
-      );
 
-      if (!targetWorkoutCount) return;
-
-      targetWorkoutCount.reps = reps;
-
-      setWorkoutPlans(copyOfWorkoutPlans);
+      setWorkoutPlans(result);
     };
 
-  const modifyWorkoutCountCompleted = (exerciseId: number) => (set: number) => {
-    const copyOfWorkoutPlans = [...workoutPlans];
+  const modifyWorkoutSetProgressStatus =
+    (workoutTrainingPlanId: number) => (workoutSetId: number) => {
+      if (!workoutPlans) return;
 
-    const targetWorkout = copyOfWorkoutPlans.find(
-      item => item.id === exerciseId,
+      const result = WorkoutService.modifyWorkoutSetProgressStatus(
+        workoutPlans,
+        workoutTrainingPlanId,
+        workoutSetId,
+      );
+
+      setWorkoutPlans(result);
+    };
+
+  const removeWorkoutSet = (workoutTrainingPlanId: number) => {
+    if (!workoutPlans) return;
+
+    const result = WorkoutService.removeWorkoutSet(
+      workoutPlans,
+      workoutTrainingPlanId,
     );
-    const targetWorkoutCount = targetWorkout?.workoutCount.find(
-      item => item.set === set,
-    );
 
-    if (!targetWorkoutCount) return;
-
-    targetWorkoutCount.completed = !targetWorkoutCount.completed;
-
-    setWorkoutPlans(copyOfWorkoutPlans);
+    setWorkoutPlans(result);
   };
 
-  const removeWorkoutCount = (exerciseId: number) => {
-    const copyOfWorkoutPlans = [...workoutPlans];
+  const finishWorkoutPlan = async () => {
+    if (!workoutPlans) return;
 
-    const targetWorkout = copyOfWorkoutPlans.find(
-      item => item.id === exerciseId,
+    const result = await Promise.all(
+      workoutPlans.workoutTrainingPlans.map(item => {
+        return WorkoutService.putWorkoutPlans(item.id, item.workoutSets);
+      }),
     );
-
-    if (!targetWorkout) return;
-
-    targetWorkout.workoutCount.pop();
-
-    setWorkoutPlans(copyOfWorkoutPlans);
   };
 
   return {
     workoutPlans,
-    removeWorkoutPlan,
-    addWorkoutCount,
-    modifyWorkoutCountKg,
-    modifyWorkoutCountReps,
-    modifyWorkoutCountCompleted,
-    removeWorkoutCount,
+    removeWorkoutTrainingPlan,
+    addWorkoutSet,
+    modifyWorkoutSetWeight,
+    modifyWorkoutSetCount,
+    modifyWorkoutSetProgressStatus,
+    removeWorkoutSet,
+    finishWorkoutPlan,
   };
 };

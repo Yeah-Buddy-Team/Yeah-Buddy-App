@@ -4,41 +4,43 @@ import { Text, View } from '../../../components/Common';
 import { COLORS } from '../../../constants';
 
 type Props = {
+  id: number;
   set: number;
-  kg: number;
-  reps: number;
-  completed: boolean;
-  onBlurModifyKg: (set: number, kg: number) => void;
-  onBlurModifyReps: (set: number, reps: number) => void;
-  onPressModifyCompleted: (set: number) => void;
+  weight: number;
+  count: number;
+  progressStatus: 'NOT_YET' | 'COMPLETED';
+  onBlurModifyWeight: (set: number, weight: number) => void;
+  onBlurModifyCount: (set: number, count: number) => void;
+  onPressModifyProgressStatus: (set: number) => void;
 };
 
-export function WorkoutCountItem(props: Props) {
+export function WorkoutSetItem(props: Props) {
   const {
+    id,
     set,
-    kg: initialKg,
-    reps: initialReps,
-    completed,
-    onBlurModifyKg,
-    onBlurModifyReps,
-    onPressModifyCompleted,
+    weight: initialWeight,
+    count: initialCount,
+    progressStatus,
+    onBlurModifyWeight,
+    onBlurModifyCount,
+    onPressModifyProgressStatus,
   } = props;
 
-  const [kg, setKg] = React.useState(initialKg);
-  const [reps, setReps] = React.useState(initialReps);
+  const [weight, setWeight] = React.useState(initialWeight);
+  const [count, setCount] = React.useState(initialCount);
 
-  const onChangeKg = (text: string) => {
+  const onChangeWeight = (text: string) => {
     const targetText = parseInt(text);
 
     if (isNaN(targetText)) return;
-    setKg(targetText);
+    setWeight(targetText);
   };
 
-  const onChangeReps = (text: string) => {
+  const onChangeCount = (text: string) => {
     const targetText = parseInt(text);
 
     if (isNaN(targetText)) return;
-    setReps(targetText);
+    setCount(targetText);
   };
 
   return (
@@ -65,7 +67,7 @@ export function WorkoutCountItem(props: Props) {
       </View>
       <TextInput
         caretHidden
-        value={kg.toString()}
+        value={weight.toString()}
         keyboardType="numeric"
         style={{
           width: 54,
@@ -79,12 +81,12 @@ export function WorkoutCountItem(props: Props) {
         }}
         textAlign="center"
         clearTextOnFocus
-        onChangeText={text => onChangeKg(text)}
-        onBlur={() => onBlurModifyKg(set, kg)}
+        onChangeText={text => onChangeWeight(text)}
+        onBlur={() => onBlurModifyWeight(id, weight)}
       />
       <TextInput
         caretHidden
-        value={reps.toString()}
+        value={count.toString()}
         keyboardType="numeric"
         style={{
           width: 48,
@@ -98,21 +100,24 @@ export function WorkoutCountItem(props: Props) {
         }}
         textAlign="center"
         clearTextOnFocus
-        onChangeText={text => onChangeReps(text)}
-        onBlur={() => onBlurModifyReps(set, reps)}
+        onChangeText={text => onChangeCount(text)}
+        onBlur={() => onBlurModifyCount(id, count)}
       />
       <TouchableOpacity
         style={{
           width: 56,
           height: 32,
-          backgroundColor: completed ? COLORS.INDIGO[500] : COLORS.GRAY[400],
+          backgroundColor:
+            progressStatus === 'COMPLETED'
+              ? COLORS.INDIGO[500]
+              : COLORS.GRAY[400],
           borderRadius: 8,
           justifyContent: 'center',
           alignItems: 'center',
           marginLeft: 39,
         }}
         activeOpacity={0.8}
-        onPress={() => onPressModifyCompleted(set)}
+        onPress={() => onPressModifyProgressStatus(id)}
       >
         <Text color={COLORS.WHITE}>✓</Text>
       </TouchableOpacity>

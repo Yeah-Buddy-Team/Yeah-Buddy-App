@@ -1,25 +1,25 @@
 import { TouchableOpacity } from 'react-native';
 import { Text, View } from '../../../components/Common';
 import { COLORS } from '../../../constants';
-import { WorkoutCount } from '../../../types/Model';
-import { WorkoutCountItem } from './WorkroutCountItem';
+import { WorkoutSet } from '../../../types/Model';
+import { WorkoutSetItem } from './WorkoutSetItem';
 
 type Props = {
-  workoutCounts: WorkoutCount[];
+  workoutSets: WorkoutSet[];
   onPressAddSet: () => void;
-  onBlurModifyKg: (set: number, kg: number) => void;
-  onBlurModifyReps: (set: number, reps: number) => void;
-  onPressModifyCompleted: (set: number) => void;
+  onBlurModifyWeight: (set: number, kg: number) => void;
+  onBlurModifyCount: (set: number, reps: number) => void;
+  onPressModifyProgressStatus: (set: number) => void;
   onPressRemoveSet: () => void;
 };
 
-export function WorkoutCountBox(props: Props) {
+export function WorkoutSetBox(props: Props) {
   const {
-    workoutCounts,
+    workoutSets,
     onPressAddSet,
-    onBlurModifyKg,
-    onBlurModifyReps,
-    onPressModifyCompleted,
+    onBlurModifyWeight,
+    onBlurModifyCount,
+    onPressModifyProgressStatus,
     onPressRemoveSet,
   } = props;
 
@@ -76,16 +76,17 @@ export function WorkoutCountBox(props: Props) {
           완료
         </Text>
       </View>
-      {workoutCounts.map(item => (
-        <WorkoutCountItem
-          key={item.set}
-          set={item.set}
-          kg={item.kg}
-          reps={item.reps}
-          completed={item.completed}
-          onBlurModifyKg={onBlurModifyKg}
-          onBlurModifyReps={onBlurModifyReps}
-          onPressModifyCompleted={onPressModifyCompleted}
+      {workoutSets.map((item, index) => (
+        <WorkoutSetItem
+          key={item.id}
+          id={item.id}
+          set={index + 1}
+          weight={item.weight}
+          count={item.count}
+          progressStatus={item.progressStatus}
+          onBlurModifyWeight={onBlurModifyWeight}
+          onBlurModifyCount={onBlurModifyCount}
+          onPressModifyProgressStatus={onPressModifyProgressStatus}
         />
       ))}
       <View
@@ -97,7 +98,7 @@ export function WorkoutCountBox(props: Props) {
       >
         <TouchableOpacity
           style={{
-            width: workoutCounts.length > 1 ? 144 : 303,
+            width: workoutSets.length > 1 ? 144 : 303,
             height: 41,
             justifyContent: 'center',
             alignItems: 'center',
@@ -121,7 +122,7 @@ export function WorkoutCountBox(props: Props) {
             세트 추가
           </Text>
         </TouchableOpacity>
-        {workoutCounts.length > 1 && (
+        {workoutSets.length > 1 && (
           <TouchableOpacity
             style={{
               width: 151,

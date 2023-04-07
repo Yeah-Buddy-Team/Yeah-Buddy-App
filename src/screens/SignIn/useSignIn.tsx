@@ -7,11 +7,11 @@ export const useSignIn = () => {
   const navigation =
     useNavigation<RootStackNavigationProps[RootStack.SignIn]>();
 
-  React.useEffect(() => {
-    (async () => {
-      await autoSignIn();
-    })();
-  }, []);
+  // React.useEffect(() => {
+  //   (async () => {
+  //     await autoSignIn();
+  //   })();
+  // }, []);
 
   const autoSignIn = async () => {
     const result = await AuthService.autoSignIn();
