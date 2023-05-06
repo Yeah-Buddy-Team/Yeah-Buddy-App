@@ -1,11 +1,12 @@
-import { TextInput } from 'react-native';
+import { TextInput, TouchableOpacity } from 'react-native';
 import { Icon, Text, View } from '../../components/Common';
 import { GRAY, INDIGO } from '../../constants/Theme';
 import { BasicLayout } from '../../layouts';
 import { useSearchFriends } from './useSearchFriends';
 
 export function SearchFriends() {
-  const { searchText, onChangeSearchText } = useSearchFriends();
+  const { searchText, onPressHeaderBack, onChangeSearchText } =
+    useSearchFriends();
 
   return (
     <BasicLayout>
@@ -13,7 +14,9 @@ export function SearchFriends() {
         style={{ height: 64, alignItems: 'center', paddingHorizontal: 12 }}
         row
       >
-        <Icon name="Back" />
+        <TouchableOpacity onPress={onPressHeaderBack} activeOpacity={0.7}>
+          <Icon name="Back" />
+        </TouchableOpacity>
         <View
           style={{
             height: 37,
