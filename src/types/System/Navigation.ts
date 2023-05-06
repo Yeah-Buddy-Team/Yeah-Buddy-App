@@ -13,6 +13,7 @@ export enum RootStack {
   MakeWorkoutPlan = 'MakeWorkoutPlan', // 운동 계획 세우기 화면
   Calendar = 'Calendar', // 캘린더 화면
   Friends = 'Friends', // 친구 화면
+  FriendsRequest = 'FriendsRequest', // 친구 요청 화면
   MyProfile = 'MyProfile', // 마이 화면
 }
 
