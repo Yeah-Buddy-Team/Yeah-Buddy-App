@@ -8,8 +8,11 @@ type Props = {
 };
 
 export const ExerciseDetailsBody = (props: Props) => {
-  const { exerciseStimulationBodyPart = '', exerciseType, exerciseExplanation = [''] } =
-    props;
+  const {
+    exerciseStimulationBodyPart = '',
+    exerciseType,
+    exerciseExplanation = [''],
+  } = props;
 
   return (
     <View
@@ -69,7 +72,9 @@ export const ExerciseDetailsBody = (props: Props) => {
         </View>
       </View>
       <View style={{ marginTop: 24 }}>
-        {exerciseExplanation.map((item) => <Text>{item}</Text>)}
+        {exerciseExplanation.map((item, index) => (
+          <Text key={index}>{item}</Text>
+        ))}
       </View>
     </View>
   );
