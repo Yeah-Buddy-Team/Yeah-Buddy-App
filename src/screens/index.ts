@@ -1,4 +1,5 @@
 export * from './SignIn';
+export * from './NicknameSetting';
 export * from './WorkoutPlan';
 export * from './SelectWorkoutStimulationBodyPart';
 export * from './SelectWorkoutExerciseByBodyPart';
