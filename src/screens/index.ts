@@ -7,4 +7,5 @@ export * from './MakeWorkoutPlan';
 export * from './Calendar';
 export * from './Friends';
 export * from './FriendsRequest';
+export * from './SearchFriends';
 export * from './MyProfile';

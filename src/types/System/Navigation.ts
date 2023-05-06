@@ -14,6 +14,7 @@ export enum RootStack {
   Calendar = 'Calendar', // 캘린더 화면
   Friends = 'Friends', // 친구 화면
   FriendsRequest = 'FriendsRequest', // 친구 요청 화면
+  SearchFriends = 'SearchFriends', // 친구 검색 화면
   MyProfile = 'MyProfile', // 마이 화면
 }
 
