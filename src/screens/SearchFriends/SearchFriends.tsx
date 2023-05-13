@@ -5,8 +5,12 @@ import { BasicLayout } from '../../layouts';
 import { useSearchFriends } from './useSearchFriends';
 
 export function SearchFriends() {
-  const { searchText, onPressHeaderBack, onChangeSearchText } =
-    useSearchFriends();
+  const {
+    searchText,
+    onPressHeaderBack,
+    onChangeSearchText,
+    onSubmitSearchText,
+  } = useSearchFriends();
 
   return (
     <BasicLayout>
@@ -35,6 +39,7 @@ export function SearchFriends() {
             onChangeText={onChangeSearchText}
             placeholder="검색"
             placeholderTextColor={GRAY[500]}
+            onSubmitEditing={() => onSubmitSearchText(searchText)}
             style={{ flex: 1 }}
           />
         </View>

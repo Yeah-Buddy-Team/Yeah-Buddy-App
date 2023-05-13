@@ -1,8 +1,11 @@
 import { Text, View } from '../../components/Common';
 import { GRAY } from '../../constants/Theme';
 import { HeaderLayout } from '../../layouts';
+import { useFriendsRequest } from './useFriendsRequest';
 
 export function FriendsRequest() {
+  useFriendsRequest();
+
   return (
     <HeaderLayout headerTitle="친구 요청">
       <View

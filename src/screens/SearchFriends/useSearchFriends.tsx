@@ -16,9 +16,14 @@ export const useSearchFriends = () => {
     setSearchText(text);
   };
 
+  const onSubmitSearchText = (text: any) => {
+    console.log(text);
+  };
+
   return {
     searchText,
     onPressHeaderBack,
     onChangeSearchText,
+    onSubmitSearchText,
   };
 };

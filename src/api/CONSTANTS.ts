@@ -12,5 +12,9 @@ export const GET_WORKOUT_PLANS = (workoutDate: string) =>
   `/workout-plans/${workoutDate}`;
 export const POST_WORKOUT_PLANS = (workoutDate: string) =>
   `/workout-plans/${workoutDate}/workout-training-plans`;
-export const PUT_WORKOUT_PLANS = (workoutDate: string, workoutPlanId: number) => 
-`/workout-plans/${workoutDate}/workout-training-plans/${workoutPlanId}`
+export const PUT_WORKOUT_PLANS = (workoutDate: string, workoutPlanId: number) =>
+  `/workout-plans/${workoutDate}/workout-training-plans/${workoutPlanId}`;
+
+// Friends
+export const GET_FRIENDS = () => `/friends?followeeId=1`;
+export const GET_FRIENDS_REQUEST = () => `/friend-requests?followers&followees`;
