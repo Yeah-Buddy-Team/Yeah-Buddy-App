@@ -1,6 +1,5 @@
-import { AxiosResponse } from 'axios';
 import { getItemEncryptedStorage } from '../utils';
-import { GET_PROFILE, POST_KAKAO_SIGN_IN } from './CONSTANTS';
+import { GET_PROFILE, POST_KAKAO_SIGN_IN, PUT_NAME } from './CONSTANTS';
 import axios from './default';
 
 type PostKakaoSignInParams = {
@@ -39,6 +38,33 @@ export const getProfile = async (): Promise<{
     })
     .then(res => {
       return res.data;
+    })
+    .catch(err => {
+      return err;
+    });
+
+  return response;
+};
+
+export const putName = async (newName: string) => {
+  const url = PUT_NAME();
+
+  const accessToken = await getItemEncryptedStorage('ACCESS_TOKEN');
+
+  const response = await axios
+    .put(
+      url,
+      {
+        name: newName,
+      },
+      {
+        headers: {
+          Authorization: accessToken,
+        },
+      },
+    )
+    .then(res => {
+      res.data;
     })
     .catch(err => {
       return err;

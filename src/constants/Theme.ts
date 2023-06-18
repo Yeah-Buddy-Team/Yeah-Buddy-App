@@ -114,6 +114,7 @@ export const BLACK = '#000000';
 
 export const KAKAO_YELLOW = '#ffe812';
 export const KAKAO_BROWN = '#3c1e1e';
+export const KAKAO_SECOND = 'rgba(60, 30, 30, 0.49)';
 
 export const LIGHT_NAVIGATION_THEME: ThemeColor = {
   primary: '',

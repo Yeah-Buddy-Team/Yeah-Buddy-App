@@ -9,3 +9,4 @@ export * from './Friends';
 export * from './FriendsRequest';
 export * from './SearchFriends';
 export * from './MyProfile';
+export * from './EditProfile';

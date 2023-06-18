@@ -16,6 +16,7 @@ export enum RootStack {
   FriendsRequest = 'FriendsRequest', // 친구 요청 화면
   SearchFriends = 'SearchFriends', // 친구 검색 화면
   MyProfile = 'MyProfile', // 마이 화면
+  EditProfile = 'EditProfile', // 회원증 편집 화면
 }
 
 export type RootStackParamList = {

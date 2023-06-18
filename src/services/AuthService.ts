@@ -62,3 +62,11 @@ export const getProfile = async () => {
     console.error(e.message);
   }
 };
+
+export const putName = async (newName: string) => {
+  try {
+    await AuthAPI.putName(newName);
+  } catch (e: any) {
+    console.error(e.message);
+  }
+};
