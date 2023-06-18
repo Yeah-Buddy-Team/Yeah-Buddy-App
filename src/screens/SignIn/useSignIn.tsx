@@ -20,7 +20,7 @@ export const useSignIn = () => {
 
   const signInWithKakao = async () => {
     await AuthService.kakaoSignIn();
-    navigation.push(RootStack.Root);
+    navigation.reset({ index: 0, routes: [{ name: RootStack.Root }] });
   };
 
   return {
