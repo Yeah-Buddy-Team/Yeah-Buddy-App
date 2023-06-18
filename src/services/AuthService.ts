@@ -52,3 +52,13 @@ export const kakaoSignIn = async () => {
     console.error(e.message);
   }
 };
+
+export const getProfile = async () => {
+  try {
+    const result = AuthAPI.getProfile();
+
+    return result;
+  } catch (e: any) {
+    console.error(e.message);
+  }
+};
