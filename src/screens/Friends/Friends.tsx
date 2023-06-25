@@ -26,7 +26,7 @@ export function Friends() {
         }}
       >
         {friends.map(item => (
-          <FriendItem type="friend" {...item} />
+          <FriendItem key={item.userId} type="friend" {...item} />
         ))}
       </View>
       <TouchableOpacity
