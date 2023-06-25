@@ -4,12 +4,10 @@ import { INDIGO, WHITE } from '../../constants/Theme';
 import { HeaderLayout } from '../../layouts';
 import { useFriends } from './useFriends';
 import { FriendItem } from '../../components/Business';
-import Profile1 from '../../assets/images/Profile1.png';
-import Profile2 from '../../assets/images/Profile2.png';
-import Profile3 from '../../assets/images/Profile3.png';
 
 export function Friends() {
-  const { navigateToSearchFriends, navigateToFriendsRequest } = useFriends();
+  const { friends, navigateToSearchFriends, navigateToFriendsRequest } =
+    useFriends();
   const { width: WIDTH } = useWindowDimensions();
 
   return (
@@ -27,24 +25,9 @@ export function Friends() {
           paddingTop: 28,
         }}
       >
-        <FriendItem
-          profile={Profile1}
-          name="Mr. Victor"
-          timeline={2}
-          type="friend"
-        />
-        <FriendItem
-          profile={Profile2}
-          name="오덕수"
-          timeline={4}
-          type="friend"
-        />
-        <FriendItem
-          profile={Profile3}
-          name="김옥동"
-          timeline={8}
-          type="friend"
-        />
+        {friends.map(item => (
+          <FriendItem type="friend" {...item} />
+        ))}
       </View>
       <TouchableOpacity
         style={{

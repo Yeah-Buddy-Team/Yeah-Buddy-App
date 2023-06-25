@@ -1,17 +1,14 @@
 import { Image } from 'react-native';
 import { GRAY, INDIGO } from '../../../constants/Theme';
 import { Text, View } from '../../Common';
-import { ImageSourcePropType } from 'react-native';
+import { Friend } from '../../../types/Model';
 
-type Props = {
+type Props = Friend & {
   type: 'received' | 'sent' | 'friend';
-  profile: ImageSourcePropType;
-  name: string;
-  timeline: number;
 };
 
 export function FriendItem(props: Props) {
-  const { type, profile, name, timeline } = props;
+  const { type, profileImageUrl, name } = props;
 
   return (
     <View
@@ -31,7 +28,7 @@ export function FriendItem(props: Props) {
             height: 48,
             borderRadius: 24,
           }}
-          source={profile}
+          source={{ uri: profileImageUrl }}
         />
         <View style={{ marginLeft: 16, justifyContent: 'center' }}>
           <Text body2 semibold>
