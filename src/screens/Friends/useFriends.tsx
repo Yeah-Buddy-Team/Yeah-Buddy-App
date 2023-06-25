@@ -12,9 +12,18 @@ export const useFriends = () => {
 
   React.useEffect(() => {
     (async () => {
-      setFriends(await FriendsService.getFriends());
+      await getFriends();
     })();
   }, []);
+
+  const getFriends = async () => {
+    setFriends(await FriendsService.getFriends());
+  };
+
+  const deleteFriend = async (userId: number) => {
+    await FriendsService.deleteFriend(userId);
+    await getFriends();
+  };
 
   const navigateToSearchFriends = () => {
     navigation.push(RootStack.SearchFriends);
@@ -26,6 +35,7 @@ export const useFriends = () => {
 
   return {
     friends,
+    deleteFriend,
     navigateToSearchFriends,
     navigateToFriendsRequest,
   };

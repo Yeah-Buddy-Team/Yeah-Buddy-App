@@ -21,3 +21,4 @@ export const PUT_WORKOUT_PLANS = (workoutDate: string, workoutPlanId: number) =>
 // Friends
 export const GET_FRIENDS = () => `/friends`;
 export const GET_FRIENDS_REQUEST = () => `/friend-requests?followers&followees`;
+export const DELETE_FRIEND = (userId: number) => `friends/${userId}`;

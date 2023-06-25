@@ -1,14 +1,15 @@
-import { Image } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
 import { GRAY, INDIGO } from '../../../constants/Theme';
 import { Text, View } from '../../Common';
 import { Friend } from '../../../types/Model';
 
 type Props = Friend & {
   type: 'received' | 'sent' | 'friend';
+  deleteFriend?: (userId: number) => void;
 };
 
 export function FriendItem(props: Props) {
-  const { type, profileImageUrl, name } = props;
+  const { type, userId, profileImageUrl, name, deleteFriend } = props;
 
   return (
     <View
@@ -46,7 +47,7 @@ export function FriendItem(props: Props) {
       </View>
       <View>
         {type === 'friend' ? (
-          <View
+          <TouchableOpacity
             style={{
               backgroundColor: GRAY[100],
               borderWidth: 1,
@@ -55,11 +56,12 @@ export function FriendItem(props: Props) {
               paddingHorizontal: 12,
               borderRadius: 6,
             }}
+            onPress={() => deleteFriend?.(userId)}
           >
             <Text body3 medium>
               삭제
             </Text>
-          </View>
+          </TouchableOpacity>
         ) : type === 'sent' ? (
           <View
             style={{

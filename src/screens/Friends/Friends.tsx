@@ -6,8 +6,12 @@ import { useFriends } from './useFriends';
 import { FriendItem } from '../../components/Business';
 
 export function Friends() {
-  const { friends, navigateToSearchFriends, navigateToFriendsRequest } =
-    useFriends();
+  const {
+    friends,
+    deleteFriend,
+    navigateToSearchFriends,
+    navigateToFriendsRequest,
+  } = useFriends();
   const { width: WIDTH } = useWindowDimensions();
 
   return (
@@ -26,7 +30,12 @@ export function Friends() {
         }}
       >
         {friends.map(item => (
-          <FriendItem key={item.userId} type="friend" {...item} />
+          <FriendItem
+            key={item.userId}
+            type="friend"
+            deleteFriend={deleteFriend}
+            {...item}
+          />
         ))}
       </View>
       <TouchableOpacity

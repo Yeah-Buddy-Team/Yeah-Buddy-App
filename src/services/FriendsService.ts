@@ -19,3 +19,11 @@ export const getFriendsrequest = async () => {
     console.error(e.message);
   }
 };
+
+export const deleteFriend = async (userId: number) => {
+  try {
+    await FriendsAPI.deleteFriend(userId);
+  } catch (e: any) {
+    console.error(e.message);
+  }
+};
