@@ -33,14 +33,19 @@ export function FriendItem(props: Props) {
           }}
           source={profile}
         />
-        <View style={{ marginLeft: 16 }}>
+        <View style={{ marginLeft: 16, justifyContent: 'center' }}>
+          <Text body2 semibold>
+            {name}
+          </Text>
+        </View>
+        {/* <View style={{ marginLeft: 16 }}>
           <Text body2 semibold style={{ marginBottom: 4 }}>
             {name}
           </Text>
           <Text body3 color={GRAY[600]}>
             {timeline}시간 전에 운동함
           </Text>
-        </View>
+        </View> */}
       </View>
       <View>
         {type === 'friend' ? (

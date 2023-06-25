@@ -19,5 +19,5 @@ export const PUT_WORKOUT_PLANS = (workoutDate: string, workoutPlanId: number) =>
   `/workout-plans/${workoutDate}/workout-training-plans/${workoutPlanId}`;
 
 // Friends
-export const GET_FRIENDS = () => `/friends?followeeId=1`;
+export const GET_FRIENDS = () => `/friends`;
 export const GET_FRIENDS_REQUEST = () => `/friend-requests?followers&followees`;
